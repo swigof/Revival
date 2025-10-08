@@ -22,4 +22,4 @@ You'll then be able to build the game's release version from the editor.
 
 ### Addons
 
-[Godot VCS Git Plugin v3.2.1](https://github.com/godotengine/godot-git-plugin/releases/tag/v3.2.1)
+[Godot VCS Git Plugin v3.1.1](https://github.com/godotengine/godot-git-plugin/releases/tag/v3.1.1)

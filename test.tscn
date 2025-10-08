@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://mvfeujtkvhkc"]
+[gd_scene load_steps=3 format=3 uid="uid://mvfeujtkvhkc"]
+
+[ext_resource type="SpriteFrames" uid="uid://bsj456vqjs36m" path="res://page_flip_frames.tres" id="1_37kl0"]
+[ext_resource type="Script" uid="uid://cqjlnwn7x0djg" path="res://background.gd" id="2_8uh7m"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+position = Vector2(363, 452)
+sprite_frames = ExtResource("1_37kl0")
+script = ExtResource("2_8uh7m")

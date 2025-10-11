@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8j4outjvc5dn"]
+
+[ext_resource type="Texture2D" uid="uid://d4ieb6v0whywg" path="res://assets/icons/speaker.png" id="1_h7yjx"]
+[ext_resource type="Texture2D" uid="uid://djqg2r2pxcg4p" path="res://assets/icons/sound-on.png" id="2_7omsx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogd44"]
+
+[node name="SoundControls" type="Node2D"]
+
+[node name="SFXButton" type="Area2D" parent="."]
+position = Vector2(-40, 0)
+
+[node name="SFXIcon" type="Sprite2D" parent="SFXButton"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_h7yjx")
+
+[node name="SFXCollision" type="CollisionShape2D" parent="SFXButton"]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_ogd44")
+
+[node name="MusicButton" type="Area2D" parent="."]
+position = Vector2(40, 0)
+
+[node name="MusicIcon" type="Sprite2D" parent="MusicButton"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7omsx")
+
+[node name="MusicCollision" type="CollisionShape2D" parent="MusicButton"]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_ogd44")

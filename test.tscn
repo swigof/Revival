@@ -1,17 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://mvfeujtkvhkc"]
+[gd_scene load_steps=5 format=3 uid="uid://mvfeujtkvhkc"]
 
-[ext_resource type="SpriteFrames" uid="uid://bsj456vqjs36m" path="res://page_flip_frames.tres" id="1_37kl0"]
-[ext_resource type="Script" uid="uid://cqjlnwn7x0djg" path="res://background.gd" id="2_8uh7m"]
-[ext_resource type="Texture2D" uid="uid://dxu15iuyn73ih" path="res://assets/title.png" id="3_6uqi0"]
+[ext_resource type="SpriteFrames" uid="uid://xpba6qtmeqvf" path="res://flip_frames.tres" id="1_ykrsh"]
+[ext_resource type="Script" uid="uid://cqjlnwn7x0djg" path="res://page.gd" id="2_8uh7m"]
+[ext_resource type="SpriteFrames" uid="uid://x5t4briwimbw" path="res://flip_below_frames.tres" id="3_ppyta"]
+[ext_resource type="SpriteFrames" uid="uid://biy4nb0gjucob" path="res://flip_above_frames.tres" id="4_ppyta"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Background" type="AnimatedSprite2D" parent="."]
+[node name="Page" type="AnimatedSprite2D" parent="."]
 position = Vector2(363, 452)
-sprite_frames = ExtResource("1_37kl0")
+sprite_frames = ExtResource("1_ykrsh")
 script = ExtResource("2_8uh7m")
 
-[node name="Cover" type="Sprite2D" parent="."]
-position = Vector2(361.99988, 355.99988)
-scale = Vector2(0.3977747, 0.3977747)
-texture = ExtResource("3_6uqi0")
+[node name="PageBelow" type="AnimatedSprite2D" parent="Page"]
+clip_children = 1
+sprite_frames = ExtResource("3_ppyta")
+
+[node name="PageAbove" type="AnimatedSprite2D" parent="Page"]
+clip_children = 1
+sprite_frames = ExtResource("4_ppyta")
+
+[connection signal="animation_finished" from="Page" to="Page" method="_on_page_animation_finished"]

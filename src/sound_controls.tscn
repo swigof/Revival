@@ -1,11 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8j4outjvc5dn"]
+[gd_scene load_steps=5 format=3 uid="uid://c8j4outjvc5dn"]
 
+[ext_resource type="Script" uid="uid://jk7tdqtq8bay" path="res://src/sound_controls.gd" id="1_51o0k"]
 [ext_resource type="Texture2D" uid="uid://d4ieb6v0whywg" path="res://assets/icons/speaker.png" id="1_h7yjx"]
 [ext_resource type="Texture2D" uid="uid://djqg2r2pxcg4p" path="res://assets/icons/sound-on.png" id="2_7omsx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ogd44"]
 
 [node name="SoundControls" type="Node2D"]
+script = ExtResource("1_51o0k")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_left = -100.0
+offset_top = -37.0
+offset_right = 77.0
+offset_bottom = 55.0
+mouse_filter = 2
+border_color = Color(0, 0, 0, 1)
+border_width = 2.0
+editor_only = false
 
 [node name="SFXButton" type="Area2D" parent="."]
 position = Vector2(-40, 0)
@@ -28,3 +40,6 @@ texture = ExtResource("2_7omsx")
 [node name="MusicCollision" type="CollisionShape2D" parent="MusicButton"]
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_ogd44")
+
+[connection signal="input_event" from="SFXButton" to="." method="_on_sfx_button_input_event"]
+[connection signal="input_event" from="MusicButton" to="." method="_on_music_button_input_event"]

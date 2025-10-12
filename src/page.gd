@@ -7,8 +7,8 @@ var count: int = 0
 func _create_sound_controls() -> Node2D:
 	var sound_controls_scene = load("res://src/sound_controls.tscn")
 	var sound_controls: Node2D = sound_controls_scene.instantiate()
-	sound_controls.position.x = -250
-	sound_controls.position.y = 200
+	sound_controls.position.x = -290
+	sound_controls.position.y = 230
 	return sound_controls
 
 func _ready() -> void:
@@ -21,19 +21,20 @@ func _ready() -> void:
 	page_above.add_child(first_page)
 	page_above.add_child(_create_sound_controls())
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouse:
-		if event.button_mask & MOUSE_BUTTON_LEFT && !is_playing():
-			play()
-			page_above.play()
-			page_below.play()
-			count += 1
-			var label = Label.new()
-			label.text = str(count)
-			page_below.add_child(label)
-			page_below.add_child(_create_sound_controls())
+func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton && event.button_mask & MOUSE_BUTTON_LEFT:
+		$NextPageButton.visible = false
+		play()
+		page_above.play()
+		page_below.play()
+		count += 1
+		var label = Label.new()
+		label.text = str(count)
+		page_below.add_child(label)
+		page_below.add_child(_create_sound_controls())
 
 func _on_page_animation_finished() -> void:
+	$NextPageButton.visible = true
 	stop()
 	page_above.stop()
 	page_below.stop()

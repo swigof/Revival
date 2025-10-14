@@ -31,6 +31,10 @@ func _process(delta: float) -> void:
 		var jitter = Vector2(randf_range(-0.25, 0.25), rng.randf_range(-0.25, 0.25))
 		position = page_home + jitter
 		jitter_timer = 0
+		if randf() >= 0.9:
+			$FilmEffect.frame = randi() % 26
+		else:
+			$FilmEffect.frame = 0
 
 func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.button_mask & MOUSE_BUTTON_LEFT:

@@ -2,18 +2,10 @@ extends AnimatedSprite2D
 
 var page_above: AnimatedSprite2D
 var page_below: AnimatedSprite2D
-var count: int = 0
 var rng = RandomNumberGenerator.new()
 const page_home = Vector2(363, 452)
 const jitter_rate = 1.0 / 24
 var jitter_timer = 0
-
-func _create_sound_controls() -> Node2D:
-	var sound_controls_scene = load("res://src/sound_controls.tscn")
-	var sound_controls: Node2D = sound_controls_scene.instantiate()
-	sound_controls.position.x = -290
-	sound_controls.position.y = 230
-	return sound_controls
 
 func _ready() -> void:
 	page_above = $PageAbove
@@ -42,10 +34,6 @@ func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape
 		play()
 		page_above.play()
 		page_below.play()
-		count += 1
-		var label = Label.new()
-		label.text = str(count)
-		page_below.add_child(label)
 		page_below.add_child(_create_sound_controls())
 
 func _on_page_animation_finished() -> void:
@@ -60,3 +48,10 @@ func _on_page_animation_finished() -> void:
 		child.queue_free()
 	for child in page_below.get_children():
 		child.reparent(page_above)
+
+func _create_sound_controls() -> CanvasItem:
+	var sound_controls_scene = load("res://src/sound_controls.tscn")
+	var sound_controls: Node2D = sound_controls_scene.instantiate()
+	sound_controls.position.x = -290
+	sound_controls.position.y = 230
+	return sound_controls

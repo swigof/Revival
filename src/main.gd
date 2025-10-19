@@ -9,6 +9,7 @@ var active_page: Page
 
 func _ready() -> void:
 	get_viewport().set_physics_object_picking_first_only(true)
+	get_viewport().set_physics_object_picking_sort(true)
 	page_above = $PageAbove
 	page_below = $PageBelow
 	var first_page = Sprite2D.new()

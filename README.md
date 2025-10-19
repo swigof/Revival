@@ -22,4 +22,8 @@ You'll then be able to build the game's release version from the editor.
 
 ### Addons
 
+#### Editor Only 
+
 [Godot VCS Git Plugin v3.1.1](https://github.com/godotengine/godot-git-plugin/releases/tag/v3.1.1)
+
+[GDTerm (Godot In-Editor Terminal) 1.0.2](https://github.com/markeel/gdterm/releases/tag/v1.0.2)

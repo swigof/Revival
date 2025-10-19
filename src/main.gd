@@ -6,6 +6,7 @@ var rng = RandomNumberGenerator.new()
 const page_home = Vector2(363, 452)
 const jitter_rate = 1.0 / 24
 var jitter_timer = 0
+var active_page: Node2D
 
 func _ready() -> void:
 	page_above = $PageAbove
@@ -35,6 +36,8 @@ func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape
 		page_above.play()
 		page_below.play()
 		page_below.add_child(_create_sound_controls())
+		active_page = _create_page()
+		page_below.add_child(active_page)
 
 func _on_page_animation_finished() -> void:
 	$NextPageButton.visible = true
@@ -48,6 +51,14 @@ func _on_page_animation_finished() -> void:
 		child.queue_free()
 	for child in page_below.get_children():
 		child.reparent(page_above)
+
+func _create_page() -> CanvasItem:
+	if active_page is DialoguePage:
+		return ChoicePage.new()
+	elif active_page is PrintingPage:
+		return DialoguePage.new()
+	else:
+		return PrintingPage.new()
 
 func _create_sound_controls() -> CanvasItem:
 	var sound_controls_scene = load("res://src/sound_controls.tscn")

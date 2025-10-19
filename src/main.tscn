@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://mvfeujtkvhkc"]
+[gd_scene load_steps=10 format=3 uid="uid://mvfeujtkvhkc"]
 
 [ext_resource type="SpriteFrames" uid="uid://xpba6qtmeqvf" path="res://src/flip_frames.tres" id="1_3cfgd"]
 [ext_resource type="Script" uid="uid://cqjlnwn7x0djg" path="res://src/main.gd" id="2_fyndt"]
@@ -8,6 +8,12 @@
 [ext_resource type="SpriteFrames" uid="uid://c4syxg663x6fx" path="res://src/film_effect_frames.tres" id="6_kmhfv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmhfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlaii"]
+size = Vector2(720, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmhfv"]
+size = Vector2(100, 720)
 
 [node name="Root" type="Node2D"]
 
@@ -39,6 +45,25 @@ shape = SubResource("CircleShape2D_kmhfv")
 position = Vector2(-379, -15)
 scale = Vector2(1, 1.044)
 sprite_frames = ExtResource("6_kmhfv")
+
+[node name="BorderCollision" type="StaticBody2D" parent="."]
+top_level = true
+
+[node name="Top" type="CollisionShape2D" parent="BorderCollision"]
+position = Vector2(360, -50)
+shape = SubResource("RectangleShape2D_rlaii")
+
+[node name="Bottom" type="CollisionShape2D" parent="BorderCollision"]
+position = Vector2(360, 770)
+shape = SubResource("RectangleShape2D_rlaii")
+
+[node name="Left" type="CollisionShape2D" parent="BorderCollision"]
+position = Vector2(-50, 360)
+shape = SubResource("RectangleShape2D_kmhfv")
+
+[node name="Right" type="CollisionShape2D" parent="BorderCollision"]
+position = Vector2(770, 360)
+shape = SubResource("RectangleShape2D_kmhfv")
 
 [connection signal="animation_finished" from="Page" to="Page" method="_on_page_animation_finished"]
 [connection signal="input_event" from="Page/NextPageButton" to="Page" method="_on_next_page_button_input_event"]

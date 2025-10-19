@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0by13oqy1r3v"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_xyw7y"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xyw7y"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xyw7y"]
+radius = 64.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyw7y"]
+size = Vector2(128, 128)
+
+[node name="Paper" type="RigidBody2D"]
+collision_layer = 2
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_xyw7y")
+gravity_scale = 0.0
+inertia = 1.0
+linear_damp = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xyw7y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xyw7y")
+
+[node name="Clickbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickbox"]
+shape = SubResource("RectangleShape2D_xyw7y")

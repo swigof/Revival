@@ -2,13 +2,13 @@ extends AnimatedSprite2D
 
 var page_above: AnimatedSprite2D
 var page_below: AnimatedSprite2D
-var rng = RandomNumberGenerator.new()
 const page_home = Vector2(363, 452)
 const jitter_rate = 1.0 / 24
 var jitter_timer = 0
 var active_page: Page
 
 func _ready() -> void:
+	get_viewport().set_physics_object_picking_first_only(true)
 	page_above = $PageAbove
 	page_below = $PageBelow
 	var first_page = Sprite2D.new()
@@ -21,7 +21,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	jitter_timer += delta
 	if jitter_timer >= jitter_rate:
-		var jitter = Vector2(randf_range(-0.25, 0.25), rng.randf_range(-0.25, 0.25))
+		var jitter = Vector2(randf_range(-0.25, 0.25), randf_range(-0.25, 0.25))
 		position = page_home + jitter
 		jitter_timer = 0
 		if randf() >= 0.9:
@@ -35,9 +35,9 @@ func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape
 		play()
 		page_above.play()
 		page_below.play()
-		page_below.add_child(_create_sound_controls())
 		active_page = _create_page()
 		page_below.add_child(active_page)
+		page_below.add_child(_create_sound_controls())
 
 func _on_page_animation_finished() -> void:
 	$NextPageButton.visible = true

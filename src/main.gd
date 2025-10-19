@@ -6,7 +6,7 @@ var rng = RandomNumberGenerator.new()
 const page_home = Vector2(363, 452)
 const jitter_rate = 1.0 / 24
 var jitter_timer = 0
-var active_page: Node2D
+var active_page: Page
 
 func _ready() -> void:
 	page_above = $PageAbove
@@ -51,8 +51,9 @@ func _on_page_animation_finished() -> void:
 		child.queue_free()
 	for child in page_below.get_children():
 		child.reparent(page_above)
+	active_page.start()
 
-func _create_page() -> CanvasItem:
+func _create_page() -> Page:
 	if active_page is DialoguePage:
 		return ChoicePage.new()
 	elif active_page is PrintingPage:

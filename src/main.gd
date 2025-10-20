@@ -2,6 +2,8 @@ extends AnimatedSprite2D
 
 var page_above: AnimatedSprite2D
 var page_below: AnimatedSprite2D
+var next_page_button: Area2D
+var film_effect: AnimatedSprite2D
 const page_home = Vector2(363, 452)
 const jitter_rate = 1.0 / 24
 var jitter_timer = 0
@@ -12,6 +14,8 @@ func _ready() -> void:
 	get_viewport().set_physics_object_picking_sort(true)
 	page_above = $PageAbove
 	page_below = $PageBelow
+	next_page_button = $NextPageButton
+	film_effect = $FilmEffect
 	var first_page = Sprite2D.new()
 	first_page.texture = load("res://assets/title.png")
 	first_page.scale.x = 0.5
@@ -26,22 +30,25 @@ func _process(delta: float) -> void:
 		position = page_home + jitter
 		jitter_timer = 0
 		if randf() >= 0.9:
-			$FilmEffect.frame = randi() % 26
+			film_effect.frame = randi() % 26
 		else:
-			$FilmEffect.frame = 0
+			film_effect.frame = 0
 
 func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.button_mask & MOUSE_BUTTON_LEFT:
-		$NextPageButton.visible = false
+		next_page_button.visible = false
 		play()
 		page_above.play()
 		page_below.play()
 		active_page = _create_page()
+		active_page.page_finished.connect(_on_page_finished)
 		page_below.add_child(active_page)
 		page_below.add_child(_create_sound_controls())
 
+func _on_page_finished() -> void:
+	next_page_button.visible = true
+
 func _on_page_animation_finished() -> void:
-	$NextPageButton.visible = true
 	stop()
 	page_above.stop()
 	page_below.stop()

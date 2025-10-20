@@ -5,5 +5,5 @@ func _ready() -> void:
 	label.text = "dialogue"
 	add_child(label)
 
-func start():
-	pass
+func start() -> void:
+	_finish()

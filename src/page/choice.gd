@@ -5,5 +5,5 @@ func _ready() -> void:
 	label.text = "choice"
 	add_child(label)
 
-func start():
-	pass
+func start() -> void:
+	_finish()

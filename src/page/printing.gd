@@ -13,9 +13,9 @@ func _on_paper_input_event(_v: Node, event: InputEvent, _s: int, source: Collisi
 		source.queue_free()
 		paper_count -= 1
 		if paper_count <= 0:
-			pass # TODO show next page arrow
+			_finish()
 
-func start():
+func start() -> void:
 	var i = 0
 	while i < paper_count:
 		var paper: RigidBody2D = paper_scene.instantiate()

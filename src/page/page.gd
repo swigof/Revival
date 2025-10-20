@@ -1,4 +1,9 @@
 class_name Page extends Node2D
 
-func start():
+signal page_finished
+
+func start() -> void:
 	pass
+
+func _finish() -> void:
+	page_finished.emit()

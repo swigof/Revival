@@ -22,12 +22,12 @@ func _ready() -> void:
 func _on_sfx_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.button_mask & MOUSE_BUTTON_LEFT:
 		sfx_enabled = !sfx_enabled
-		AudioServer.set_bus_mute(1, sfx_enabled)
+		AudioServer.set_bus_mute(1, !sfx_enabled)
 		_set_sfx_icon()
 
 				
 func _on_music_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.button_mask & MOUSE_BUTTON_LEFT:
 		music_enabled = !music_enabled
-		AudioServer.set_bus_mute(2, music_enabled)
+		AudioServer.set_bus_mute(2, !music_enabled)
 		_set_music_icon()

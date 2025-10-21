@@ -4,6 +4,7 @@ var paper_scene = load("res://src/page/paper.tscn")
 var paper_count = 10
 var paper_launch_time = 0.1
 var launched_pages = 0
+var clicked_pages = 0
 var started = false
 var paper_launch_time_acc = 0
 
@@ -29,8 +30,8 @@ func _process(delta: float) -> void:
 func _on_paper_input_event(_v: Node, event: InputEvent, _s: int, source: CollisionObject2D) -> void:
 	if event is InputEventMouseButton && event.button_mask & MOUSE_BUTTON_LEFT:
 		source.queue_free()
-		paper_count -= 1
-		if paper_count <= 0:
+		clicked_pages += 1
+		if clicked_pages >= paper_count:
 			_finish()
 
 func start() -> void:

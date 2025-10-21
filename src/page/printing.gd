@@ -13,8 +13,10 @@ func _ready() -> void:
 	add_child(label)
 
 func _process(delta: float) -> void:
+	if !started:
+		return
 	paper_launch_time_acc += delta
-	if paper_launch_time_acc > paper_launch_time && launched_pages < paper_count && started:
+	if paper_launch_time_acc > paper_launch_time && launched_pages < paper_count:
 		var paper: RigidBody2D = paper_scene.instantiate()
 		paper.apply_impulse(Vector2(randf_range(-2000, 2000), randf_range(-2000, 2000)))
 		paper.apply_torque_impulse(randf_range(-5, 5))

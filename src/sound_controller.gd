@@ -6,6 +6,11 @@ var paper_throw_sounds = AudioStreamRandomizer.new()
 var page_turn_player = AudioStreamPlayer.new()
 var page_turn_sounds = AudioStreamRandomizer.new()
 
+var sfx_enabled = true
+var music_enabled = true
+signal sfx_toggled
+signal music_toggled
+
 func _ready() -> void:
 	add_child(paper_throw_player)
 	paper_throw_player.set_max_polyphony(100)
@@ -25,6 +30,16 @@ func _ready() -> void:
 	for file_name in file_names:
 		if file_name.ends_with(".mp3"):
 			page_turn_sounds.add_stream(-1, load(path + "/" + file_name))
+
+func toggle_sfx() -> void:
+	sfx_enabled = !sfx_enabled
+	AudioServer.set_bus_mute(1, !sfx_enabled)
+	sfx_toggled.emit()
+
+func toggle_music() -> void:
+	music_enabled = !music_enabled
+	AudioServer.set_bus_mute(2, !music_enabled)
+	music_toggled.emit()
 
 func play_paper_throw_sound() -> void:
 	paper_throw_player.play()

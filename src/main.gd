@@ -45,7 +45,7 @@ func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape
 		page_below.add_child(active_page)
 		page_below.add_child(_create_sound_controls())
 		page_below.add_child(_create_currency_ui())
-		SoundPlayer.play_page_turn_sound()
+		SoundController.play_page_turn_sound()
 
 func _on_page_finished() -> void:
 	next_page_button.visible = true

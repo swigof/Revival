@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		paper.apply_torque_impulse(randf_range(-5, 5))
 		paper.get_node("Clickbox").input_event.connect(_on_paper_input_event.bind(paper))
 		add_child(paper)
-		SoundPlayer.play_paper_throw_sound()
+		SoundController.play_paper_throw_sound()
 		launched_pages += 1
 		paper_launch_time_acc -= paper_launch_time
 

@@ -5,7 +5,8 @@ var page_above: AnimatedSprite2D
 var page_below: AnimatedSprite2D
 var next_page_button: Area2D
 var film_effect: AnimatedSprite2D
-const page_home = Vector2(363, 452)
+var camera: Camera2D
+const camera_home = Vector2(360, 360)
 const jitter_rate = 1.0 / 24
 var jitter_timer = 0
 var active_page: Page
@@ -18,6 +19,7 @@ func _ready() -> void:
 	page_below = $Page/PageBelow
 	next_page_button = $Page/NextPageButton
 	film_effect = $FilmEffect
+	camera = $Camera2D
 	var first_page = Sprite2D.new()
 	first_page.texture = load("res://assets/title.png")
 	first_page.scale.x = 0.5
@@ -29,7 +31,7 @@ func _process(delta: float) -> void:
 	jitter_timer += delta
 	if jitter_timer >= jitter_rate:
 		var jitter = Vector2(randf_range(-0.25, 0.25), randf_range(-0.25, 0.25))
-		page.position = page_home + jitter
+		camera.position = camera_home + jitter
 		jitter_timer = 0
 		if randf() >= 0.9:
 			film_effect.frame = randi() % 26
@@ -68,10 +70,10 @@ func _on_page_animation_finished() -> void:
 func _create_page() -> Page:
 	if active_page is DialoguePage:
 		return ChoicePage.new()
-	elif active_page is PrintingPage:
-		return DialoguePage.new()
-	else:
+	elif active_page is ChoicePage:
 		return PrintingPage.new()
+	else:
+		return DialoguePage.new()
 
 func _create_sound_controls() -> CanvasItem:
 	var sound_controls_scene = load("res://src/ui/sound_controls.tscn")

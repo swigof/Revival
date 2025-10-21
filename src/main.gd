@@ -1,5 +1,6 @@
-extends AnimatedSprite2D
+extends Node2D
 
+var page: AnimatedSprite2D
 var page_above: AnimatedSprite2D
 var page_below: AnimatedSprite2D
 var next_page_button: Area2D
@@ -12,9 +13,10 @@ var active_page: Page
 func _ready() -> void:
 	get_viewport().set_physics_object_picking_first_only(true)
 	get_viewport().set_physics_object_picking_sort(true)
-	page_above = $PageAbove
-	page_below = $PageBelow
-	next_page_button = $NextPageButton
+	page = $Page
+	page_above = $Page/PageAbove
+	page_below = $Page/PageBelow
+	next_page_button = $Page/NextPageButton
 	film_effect = $FilmEffect
 	var first_page = Sprite2D.new()
 	first_page.texture = load("res://assets/title.png")
@@ -27,7 +29,7 @@ func _process(delta: float) -> void:
 	jitter_timer += delta
 	if jitter_timer >= jitter_rate:
 		var jitter = Vector2(randf_range(-0.25, 0.25), randf_range(-0.25, 0.25))
-		position = page_home + jitter
+		page.position = page_home + jitter
 		jitter_timer = 0
 		if randf() >= 0.9:
 			film_effect.frame = randi() % 26
@@ -37,7 +39,7 @@ func _process(delta: float) -> void:
 func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton && event.button_mask & MOUSE_BUTTON_LEFT:
 		next_page_button.visible = false
-		play()
+		page.play()
 		page_above.play()
 		page_below.play()
 		active_page = _create_page()
@@ -51,10 +53,10 @@ func _on_page_finished() -> void:
 	next_page_button.visible = true
 
 func _on_page_animation_finished() -> void:
-	stop()
+	page.stop()
 	page_above.stop()
 	page_below.stop()
-	frame = 0
+	page.frame = 0
 	page_above.frame = 0
 	page_below.frame = 0
 	for child in page_above.get_children():

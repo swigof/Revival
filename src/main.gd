@@ -70,7 +70,7 @@ func _create_page() -> Page:
 		return PrintingPage.new()
 
 func _create_sound_controls() -> CanvasItem:
-	var sound_controls_scene = load("res://src/sound_controls.tscn")
+	var sound_controls_scene = load("res://src/ui/sound_controls.tscn")
 	var sound_controls: Node2D = sound_controls_scene.instantiate()
 	sound_controls.position.x = -290
 	sound_controls.position.y = 230

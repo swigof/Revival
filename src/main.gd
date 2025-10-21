@@ -44,6 +44,7 @@ func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape
 		active_page.page_finished.connect(_on_page_finished)
 		page_below.add_child(active_page)
 		page_below.add_child(_create_sound_controls())
+		page_below.add_child(_create_currency_ui())
 
 func _on_page_finished() -> void:
 	next_page_button.visible = true
@@ -75,3 +76,10 @@ func _create_sound_controls() -> CanvasItem:
 	sound_controls.position.x = -290
 	sound_controls.position.y = 230
 	return sound_controls
+
+func _create_currency_ui() -> CanvasItem:
+	var currency_ui_scene = load("res://src/ui/currencies.tscn")
+	var currency_ui = currency_ui_scene.instantiate()
+	currency_ui.position.x = -365
+	currency_ui.position.y = -450
+	return currency_ui

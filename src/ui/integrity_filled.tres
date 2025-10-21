@@ -1,0 +1,8 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://cvy1fcma1nxt8"]
+
+[ext_resource type="Gradient" uid="uid://cc5j5wh76pwk3" path="res://src/ui/integrity_filled_gradient.tres" id="1_hn2te"]
+
+[resource]
+gradient = ExtResource("1_hn2te")
+fill = 1
+fill_from = Vector2(0.5, 0.5)

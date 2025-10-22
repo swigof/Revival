@@ -1,6 +1,6 @@
 class_name PrintingPage extends Page
 
-var paper_scene = load("res://src/page/paper.tscn")
+var paper_scene = load("res://src/page/printing/paper.tscn")
 var paper_count = 10
 var paper_launch_time = 0.1
 var launched_pages = 0

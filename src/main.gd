@@ -76,8 +76,8 @@ func _create_page() -> Page:
 func _create_sound_controls() -> CanvasItem:
 	var sound_controls_scene = load("res://src/ui/sound_controls.tscn")
 	var sound_controls: Node2D = sound_controls_scene.instantiate()
-	sound_controls.position.x = -290
-	sound_controls.position.y = 230
+	sound_controls.position.x = -280
+	sound_controls.position.y = 220
 	return sound_controls
 
 func _create_currency_ui() -> CanvasItem:

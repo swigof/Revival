@@ -20,6 +20,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Integrity1" type="TextureRect" parent="Integrity"]
 layout_mode = 0
@@ -27,6 +28,7 @@ offset_left = 147.0
 offset_top = 16.0
 offset_right = 211.0
 offset_bottom = 80.0
+mouse_filter = 2
 texture = ExtResource("2_gfclx")
 metadata/_edit_use_anchors_ = true
 
@@ -36,6 +38,7 @@ offset_left = 211.0
 offset_top = 16.0
 offset_right = 275.0
 offset_bottom = 80.0
+mouse_filter = 2
 texture = ExtResource("2_gfclx")
 metadata/_edit_use_anchors_ = true
 
@@ -45,6 +48,7 @@ offset_left = 275.0
 offset_top = 16.0
 offset_right = 339.0
 offset_bottom = 80.0
+mouse_filter = 2
 texture = ExtResource("2_gfclx")
 metadata/_edit_use_anchors_ = true
 
@@ -54,6 +58,7 @@ offset_left = 339.0
 offset_top = 16.0
 offset_right = 403.0
 offset_bottom = 80.0
+mouse_filter = 2
 texture = ExtResource("2_gfclx")
 metadata/_edit_use_anchors_ = true
 

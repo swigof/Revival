@@ -8,6 +8,8 @@ var page_launch_time = 0.1
 var next_print_wealth = 0
 var next_print_integrity = 0
 
+var printed_slop = false
+
 signal integrity_changed
 signal wealth_changed
 

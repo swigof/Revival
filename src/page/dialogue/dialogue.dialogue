@@ -7,7 +7,7 @@ Tom: He's only ever understood success as a matter of money.
 Harry: I certainly hope to make something doing this work.
 Tom: Of course my friend, but there's more to it than that isn't there?
 Harry: There certainly is.
-Harry: In any case, what were you thinking to print first?
+Harry: In any case, what were you thinking to press first?
 - The Art of Fine Printing \n +1 integrity | +100$
 	do GameManager.next_print_integrity = 1
 	do GameManager.next_print_wealth = 100
@@ -15,8 +15,146 @@ Harry: We'll get right to it then.
 => END
 
 ~ dialogue1
-Harry: Choose an upgrade
-- Paper cannon 
-- Halmark book license
-- 
+Tom: I'm home!
+Cee: Oh isn't it wonderful Tom.
+Tom: What?
+Cee: We're to marry in but two months.
+Tom: It surprises me still.
+Tom: We've known eachother so briefly and yet it's as if even with an eternity of time, the feeling would be the same.
+Cee: I long to spend my life with you darling.
+Tom: A life spent fully it will be.
+Cee: ...Oh. Some mail came for you.
+Tom: I see.
+Tom: ...
+Tom: (Daisy...)
+=> END
+
+~ dialogue2
+Daisy: Oh I've missed you Tom!
+Tom: I've missed you too Daisy.
+Daisy: Paris was truly breathtaking. A once in a lifetime experience.
+Daisy: I'll be making a trip to Mexico soon too now!
+Daisy: Would you come with me?
+Tom: Oh I'm not so sure.
+Daisy: It'll only be a month. Surely things will be alright around here without you for that long.
+Daisy: And you know what? I was thinking Tom, about how you always said you wanted a child.
+Daisy: I want one badly now.
+Daisy: So would you please be good enough to marry me?
+Tom: Daisy...
+Tom: I'm going to be married.
+Daisy: ...I can't believe it.
+Daisy: ...In just a month!
+Tom: I thought things were over between us. You had been so distant before you left.
+Daisy: I was a fool, I see that now.
+Daisy: How can you even tell this is what you want?
+Tom: Oh I love her Daisy. Truly I do.
+Daisy: ...Behold the bridegroom cometh. And no oil for my lamp as usual.
+Daisy: ...
+Daisy: You'll leave now. You must.
+Tom: Just like that?
+Daisy: Yes.
+Tom: When will we see eachother again?
+Daisy: Doomsday my darling.
+=> END
+
+~ dialogue3
+Cee: Oh please Tom won't you?
+Tom: I can't print that tripe.
+Cee: Grace thinks it's marvelous!
+Tom: Well, Grace is something isn't she.
+Cee: Think of it this way. With the money you'll make from the sales, you could fund ten other books.
+Tom: ...I suppose there's some truth to that.
+Cee: There's plenty of truth to it! You'll find yourself much happier if you listen to me.
+=> END
+
+# Red firing scene and other possible scenes go here
+
+~ dialogue4
+Tom: I didn't think you would come.
+Daisy: I didn't think so either but our friends have a way of convincing.
+Daisy: I suppose you haven't planned this party as a final farewell to them all before dissapearing into your marriage.
+Tom: Daisy nothing has changed. Nothing will change.
+if GameManager.printed_slop
+	Daisy: ...I read your new book.
+	Tom: You did?
+	Tom: Oh please Daisy you must tell me what you think.
+	Daisy: It's awfully bright.
+	Tom: Yes well, it sold extraordinarily.
+	Daisy: I'm sure it simply flew off the shelves... In drug stores.
+	Daisy: Is this how you envisioned things going Tom? Another cog in the machine.
+else
+	Daisy: I suppose you have still been printing their books.
+	Daisy: Why I just read Joe's newest from your press. 
+	Daisy: It was extraordinary.
+=> END
+
+~ dialogue5
+if GameManager.integrity >= 3
+	Tom: Eating up here reminds me of something.
+	Tom: The private space, the fine wine... Infinite riches in a little room.
+	Tom: An alluring sparkle eyed woman.
+	Cee: Thank you sir. What does it remind you of?
+	Tom: I'm not sure.
+Tom: What made you want to eat in your sitting room?
+Cee: I want to discuss the matter of your father.
+Tom: Oh.
+Cee: He's arranged such a kind gift for us.
+Tom: Yes, he has hasn't he.
+Cee: You will accept it won't you?
+if GameManager.integrity < 3
+	Tom: Is that what you want?
+	Cee: Of course. Your father is a perfectly kind man, you should do no better than to accept his gift.
+	Tom: So I shall.
+	Tom and Cee eventually get married and go to spend the winter at Tom's father's.
+	if GameManager.wealth >= 10000
+		Rufus Collier is shocked on hearing the news that his son's press has been quite lucrative.
+		He offers to further invest into the business, expanding its operations.
+		Tom's press becomes a household name and he prints what the people want to read.
+		He lives ever after.
+		=> END
+	else
+		Rufus Collier lords over his son. He tells him he ought to follow a respectable profession and become a banker like him.
+		Cee agrees.
+		The press is sold and Tom follows in his father's footsteps.
+		He lives ever after.
+		=> END
+Tom: I cannot.
+Cee: You are simply awful. Sometimes I think you do it to spite me.
+Cee: It's as if you don't even care at all.
+Tom: He seeks only to own us. To lord over me and tell me how to live my life.
+Cee: I think living with him would be a very nice change for the winter. We wouldn't have to stay forever.
+Tom: You would like that wouldn't you? If I accepted his gift?
+Cee: Very much.
+Tom: ...Well then perhaps I will.
+Cee: Oh Tom really? Do you mean it?
+Tom: Yes. For you dear I'll do it.
+Tom: Here let's drink to it!
+Cee: Let's!
+Tom: ...I remember now what it was.
+Cee: What?
+Tom: Oh, no matter.
+Cee: ...All at once, I feel terribly naughty somehow.
+Cee: Let's go to bed shall we?
+Tom: I'll join you in just a moment.
+Tom slips away from his betrothed realizing the truth of her manner.
+He runs back to Daisy that evening and spills his heart to her.
+They get married the following week.
+Tom continues his work at the press, making luxury books that his friends write and enjoy.
+Daisy becomes pregnant and eventually gives birth to a healthy baby boy.
+They live happily ever after.
+=> END
+
+~ game_over_integrity
+An opportunity arises with one of Cee's friends to sell the press.
+Having lost all of his integrity, Tom signs it off.
+He later moves to town with his new bride to follow his father and becomes a banker.
+He lives ever after.
+=> END
+
+# Only useful if gameplay has actual failure condition to lose money on
+~ game_over_money
+Having no wealth left, Tom loses the press and is forced to move to more modest living accommodations.
+Cee becomes increasingly frustrated with the state of their lives, eventually calling off their wedding and running off with her lawyer friend Owen Arthur.
+Some time after losing his fiance, Tom moves back to his father's home in town and becomes a banker.
+He lives ever after.
 => END

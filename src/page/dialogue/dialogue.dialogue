@@ -8,10 +8,15 @@ Harry: I certainly hope to make something doing this work.
 Tom: Of course my friend, but there's more to it than that isn't there?
 Harry: There certainly is.
 Harry: In any case, what were you thinking to print first?
-- The Art of Fine Printing
+- The Art of Fine Printing \n +1 integrity | +100$
+	do GameManager.next_print_integrity = 1
+	do GameManager.next_print_wealth = 100
 Harry: We'll get right to it then.
 => END
 
 ~ dialogue1
-Tom: lol
+Harry: Choose an upgrade
+- Paper cannon 
+- Halmark book license
+- 
 => END

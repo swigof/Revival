@@ -28,6 +28,7 @@ func _on_paper_input_event(_v: Node, event: InputEvent, _s: int, source: Collisi
 		source.queue_free()
 		clicked_pages += 1
 		if clicked_pages >= GameManager.page_count:
+			GameManager.apply_print_changes()
 			_finish()
 
 func start() -> void:

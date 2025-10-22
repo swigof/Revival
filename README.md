@@ -22,6 +22,8 @@ You'll then be able to build the game's release version from the editor.
 
 ### Addons
 
+[Dialogue Manager 3.8.1](https://github.com/nathanhoad/godot_dialogue_manager/releases/tag/v3.8.1)
+
 #### Editor Only 
 
 [Godot VCS Git Plugin v3.1.1](https://github.com/godotengine/godot-git-plugin/releases/tag/v3.1.1)

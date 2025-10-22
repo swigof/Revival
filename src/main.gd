@@ -69,8 +69,6 @@ func _on_page_animation_finished() -> void:
 
 func _create_page() -> Page:
 	if active_page is DialoguePage:
-		return ChoicePage.new()
-	elif active_page is ChoicePage:
 		return PrintingPage.new()
 	else:
 		return DialoguePage.new()

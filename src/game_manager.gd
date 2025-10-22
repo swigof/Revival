@@ -2,6 +2,8 @@ extends Node
 
 var integrity: int = 0
 var wealth: int = 0
+var page_count = 10
+var page_launch_time = 0.1
 
 signal integrity_changed
 signal wealth_changed

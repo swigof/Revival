@@ -7,9 +7,7 @@ var started = false
 var page_time_acc = 0
 
 func _ready() -> void:
-	var label = Label.new()
-	label.text = "printing"
-	add_child(label)
+	pass
 
 func _process(delta: float) -> void:
 	if !started:
@@ -21,7 +19,7 @@ func _process(delta: float) -> void:
 		paper.apply_torque_impulse(randf_range(-5, 5))
 		paper.get_node("Clickbox").input_event.connect(_on_paper_input_event.bind(paper))
 		add_child(paper)
-		SoundController.play_paper_throw_sound()
+		SoundManager.play_paper_throw_sound()
 		launched_pages += 1
 		page_time_acc -= GameManager.page_launch_time
 

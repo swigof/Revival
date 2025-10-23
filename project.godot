@@ -24,6 +24,7 @@ GameManager="*res://src/game_manager.gd"
 [dialogue_manager]
 
 runtime/balloon_path="uid://cebj8sgiana8i"
+runtime/state_autoload_shortcuts=["GameManager"]
 
 [display]
 

@@ -75,6 +75,8 @@ func _create_page(stage: String) -> Page:
 		next_page = Cover.new()
 	elif stage == "credits":
 		next_page = Credits.new()
+	elif stage == "end":
+		next_page = EndPage.new()
 	else:
 		next_page = DialoguePage.new()
 		next_page.title = stage

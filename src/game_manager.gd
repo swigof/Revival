@@ -4,7 +4,7 @@ var integrity: int = 0
 var wealth: int = 0
 var sequence_stage = 0
 var total_earnings = 0
-var page_launch_time = 0.1
+var page_launch_time = 0.5
 
 var print_wealth = 0
 var print_integrity = 0
@@ -22,14 +22,27 @@ const sequence: Array[String] = [
 	"dialogue2", "choice_start", "print", "dialogue3", "choice_start", "print", 
 	"dialogue4", "choice_start", "print", "dialogue5", "credits"
 ]
+const no_ui_stages = ["cover", "credits", "end"]
+
+func reset_game() -> void:
+	integrity = 0
+	wealth = 0
+	sequence_stage = 0
+	total_earnings = 0
+	page_launch_time = 0.5
+	print_wealth = 0
+	print_integrity = 0
+	print_quantity = 0
+	printed_slop = false
 
 func get_stage() -> String:
 	return sequence[sequence_stage]
 	
-func increment_stage() -> void:
+func increment_stage() -> String:
 	sequence_stage += 1
 	if sequence_stage >= len(sequence):
 		sequence_stage = 0
+	return get_stage()
 
 func apply_print_changes() -> void:
 	update_wealth(print_wealth * print_quantity)

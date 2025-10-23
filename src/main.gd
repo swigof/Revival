@@ -40,12 +40,15 @@ func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape
 		page.play()
 		page_above.play()
 		page_below.play()
-		GameManager.increment_stage()
-		active_page = _create_page()
+		var stage = GameManager.increment_stage()
+		if stage == "choice_start":
+			GameManager.apply_print_changes()
+		active_page = _create_page(stage)
 		active_page.page_finished.connect(_on_page_finished)
 		page_below.add_child(active_page)
 		page_below.add_child(_create_sound_controls())
-		page_below.add_child(_create_currency_ui())
+		if stage not in GameManager.no_ui_stages:
+			page_below.add_child(_create_currency_ui())
 		SoundManager.play_page_turn_sound()
 
 func _on_page_finished() -> void:
@@ -64,8 +67,7 @@ func _on_page_animation_finished() -> void:
 		child.reparent(page_above)
 	active_page.start()
 
-func _create_page() -> Page:
-	var stage = GameManager.get_stage()
+func _create_page(stage: String) -> Page:
 	var next_page: Page
 	if stage == "print":
 		next_page = PrintingPage.new()
@@ -74,8 +76,6 @@ func _create_page() -> Page:
 	elif stage == "credits":
 		next_page = Credits.new()
 	else:
-		if stage == "choice_start":
-			GameManager.apply_print_changes()
 		next_page = DialoguePage.new()
 		next_page.title = stage
 	return next_page

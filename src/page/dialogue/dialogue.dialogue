@@ -118,7 +118,7 @@ if GameManager.integrity < 3
 	Cee: Of course. Your father is a perfectly kind man, you should do no better than to accept his gift.
 	Tom: So I shall.
 	Tom and Cee eventually get married and go to spend the winter at Tom's father's.
-	if GameManager.wealth >= 10000
+	if GameManager.total_earnings >= 10000
 		Rufus Collier is shocked on hearing the news that his son's press has been quite lucrative.
 		He offers to further invest into the business, expanding its operations.
 		Tom's press becomes a household name and he prints what the people want to read.

@@ -15,8 +15,8 @@ func _ready() -> void:
 		Arrow by Felbrigg on game-icons.net
 		Both licensed under CC BY 3.0
 
-		Film Grime Overlay by jamal studio on Vecteezy
-		License under the Vecteezy Free License
+		Film grime overlay by jamal studio on Vecteezy
+		Licensed under the Vecteezy Free License
 
 		Featuring the music \"Lonely\" by Leo Reisman & His Orchestra
 		From a 1927 recording in the public domain

@@ -2,6 +2,7 @@ extends Node
 
 var integrity: int = 0
 var wealth: int = 0
+var total_earnings = 0
 var page_count = 10
 var page_launch_time = 0.1
 
@@ -25,6 +26,8 @@ func apply_print_changes() -> void:
 func update_wealth(amount: int) -> void:
 	if amount == 0:
 		return
+	if amount > 0:
+		total_earnings += amount
 	wealth += amount
 	if wealth > max_wealth:
 		wealth = max_wealth

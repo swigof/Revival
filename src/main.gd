@@ -20,11 +20,7 @@ func _ready() -> void:
 	next_page_button = $Page/NextPageButton
 	film_effect = $FilmEffect
 	camera = $Camera2D
-	var first_page = Sprite2D.new()
-	first_page.texture = load("res://assets/title.png")
-	first_page.scale.x = 0.5
-	first_page.scale.y = 0.5
-	page_above.add_child(first_page)
+	page_above.add_child(Cover.new())
 	page_above.add_child(_create_sound_controls())
 
 func _process(delta: float) -> void:
@@ -44,6 +40,7 @@ func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape
 		page.play()
 		page_above.play()
 		page_below.play()
+		GameManager.increment_stage()
 		active_page = _create_page()
 		active_page.page_finished.connect(_on_page_finished)
 		page_below.add_child(active_page)
@@ -68,10 +65,16 @@ func _on_page_animation_finished() -> void:
 	active_page.start()
 
 func _create_page() -> Page:
-	if active_page is DialoguePage:
-		return PrintingPage.new()
+	var stage = GameManager.get_stage()
+	var next_page: Page
+	if stage == "print":
+		next_page = PrintingPage.new()
+	elif stage == "cover":
+		next_page = Cover.new()
 	else:
-		return DialoguePage.new()
+		next_page = DialoguePage.new()
+		next_page.title = stage
+	return next_page
 
 func _create_sound_controls() -> CanvasItem:
 	var sound_controls_scene = load("res://src/ui/sound_controls.tscn")

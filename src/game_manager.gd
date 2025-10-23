@@ -2,6 +2,7 @@ extends Node
 
 var integrity: int = 0
 var wealth: int = 0
+var sequence_stage = 0
 var total_earnings = 0
 var page_count = 10
 var page_launch_time = 0.1
@@ -16,6 +17,19 @@ signal wealth_changed
 
 const max_integrity = 4
 const max_wealth = 99999
+const sequence: Array[String] = [
+	"cover", "dialogue0", "print", "dialogue1", "choice_start", "print", 
+	"dialogue2", "choice_start", "print", "dialogue3", "choice_start", "print", 
+	"dialogue4", "choice_start", "print", "dialogue5"
+]
+
+func get_stage() -> String:
+	return sequence[sequence_stage]
+	
+func increment_stage() -> void:
+	sequence_stage += 1
+	if sequence_stage >= len(sequence):
+		sequence_stage = 0
 
 func apply_print_changes() -> void:
 	update_wealth(next_print_wealth)

@@ -101,6 +101,7 @@ MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
+RichTextLabel/constants/line_separation = 5
 
 [sub_resource type="Animation" id="Animation_nlsx6"]
 length = 0.001

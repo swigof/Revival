@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cebj8sgiana8i"]
+[gd_scene load_steps=14 format=3 uid="uid://cebj8sgiana8i"]
 
 [ext_resource type="Script" uid="uid://cct2cx2duk4x0" path="res://src/page/dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="FontFile" uid="uid://dksv2awalnhkv" path="res://assets/fonts/LibreCaslonText-Bold.ttf" id="2_3nytx"]
@@ -12,20 +12,7 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri4m3"]
-bg_color = Color(0, 0, 0, 1)
-draw_center = false
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 0.50980395)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -85,14 +72,13 @@ corner_radius_bottom_left = 5
 [sub_resource type="Theme" id="Theme_qq3yp"]
 default_font_size = 20
 Button/colors/font_color = Color(0, 0, 0, 1)
-Button/colors/font_disabled_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.50980395)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/fonts/font = ExtResource("2_3nytx")
 Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
-Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
 Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
 Button/styles/normal = SubResource("StyleBoxFlat_3nytx")
 Button/styles/pressed = SubResource("StyleBoxFlat_obwxa")

@@ -20,7 +20,7 @@ const max_wealth = 99999
 const sequence: Array[String] = [
 	"cover", "dialogue0", "print", "dialogue1", "choice_start", "print", 
 	"dialogue2", "choice_start", "print", "dialogue3", "choice_start", "print", 
-	"dialogue4", "choice_start", "print", "dialogue5"
+	"dialogue4", "choice_start", "print", "dialogue5", "credits"
 ]
 
 func get_stage() -> String:

@@ -71,6 +71,8 @@ func _create_page() -> Page:
 		next_page = PrintingPage.new()
 	elif stage == "cover":
 		next_page = Cover.new()
+	elif stage == "credits":
+		next_page = Credits.new()
 	else:
 		next_page = DialoguePage.new()
 		next_page.title = stage

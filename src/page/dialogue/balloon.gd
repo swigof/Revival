@@ -141,10 +141,11 @@ func apply_dialogue_line() -> void:
 func next(next_id: String) -> void:
 	var diag = await resource.get_next_dialogue_line(next_id, temporary_game_states)
 	# Read possible response tags and remove / disable them as needed
-	diag.responses = diag.responses.filter(_has_no_hide_tag)
-	for response in diag.responses:
-		if "disable" in response.tags:
-			response.is_allowed = false
+	if diag != null:
+		diag.responses = diag.responses.filter(_has_no_hide_tag)
+		for response in diag.responses:
+			if "disable" in response.tags:
+				response.is_allowed = false
 	self.dialogue_line = diag
 
 func _has_no_hide_tag(response) -> bool:

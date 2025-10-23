@@ -43,6 +43,8 @@ func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape
 		var stage = GameManager.increment_stage()
 		if stage == "choice_start":
 			GameManager.apply_print_changes()
+		if stage == "cover":
+			GameManager.reset_game()
 		active_page = _create_page(stage)
 		active_page.page_finished.connect(_on_page_finished)
 		page_below.add_child(active_page)

@@ -73,17 +73,17 @@ Daisy: Would you come with me?
 Tom: Oh I'm not so sure.
 Daisy: It'll only be a month. Surely things will be alright around here without you for that long.
 Daisy: And you know what? I was thinking Tom, about how you always said you wanted a child.
-Daisy: I want one badly now.
+Daisy: There was the cutest little boy on the boat ride back.
+Daisy: I've changed my mind. I want one badly now.
 Daisy: So would you please be good enough to marry me?
 Tom: Daisy...
 Tom: I'm going to be married.
 Daisy: ...I can't believe it.
-Daisy: ...In just a month!
+Daisy: In just a month!
 Tom: I thought things were over between us. You had been so distant before you left.
-Daisy: I was a fool, I see that now.
-Daisy: How can you even tell this is what you want?
+Daisy: How could you even tell so quickly this is what you want?
 Tom: Oh I love her Daisy. Truly I do.
-Daisy: ...Behold the bridegroom cometh. And no oil for my lamp as usual.
+Daisy: Behold the bridegroom cometh. And no oil for my lamp as usual.
 Daisy: ...
 Daisy: You'll leave now. You must.
 Tom: Just like that?
@@ -120,7 +120,7 @@ if GameManager.printed_slop
 else
 	Daisy: I suppose you have still been printing their books.
 	Daisy: Why I just read Joe's newest from your press. 
-	Daisy: It was extraordinary.
+	Daisy: It was wonderful.
 => END
 
 ~ dialogue5
@@ -160,7 +160,7 @@ Tom: He seeks only to own us. To lord over me and tell me how to live my life.
 Cee: I think living with him would be a very nice change for the winter. We wouldn't have to stay forever.
 Tom: You would like that wouldn't you? If I accepted his gift?
 Cee: Very much.
-Tom: ...Well then perhaps I will.
+Tom: Well... then perhaps I will.
 Cee: Oh Tom really? Do you mean it?
 Tom: Yes. For you dear I'll do it.
 Tom: Here let's drink to it!

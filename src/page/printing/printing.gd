@@ -1,6 +1,7 @@
 class_name PrintingPage extends Page
 
 var paper_scene = load("res://src/page/printing/paper.tscn")
+var book_texture = load("res://assets/printing/book.png")
 var launched_pages = 0
 var clicked_pages = 0
 var started = false
@@ -36,7 +37,13 @@ func _process(delta: float) -> void:
 
 func _on_paper_input_event(_v: Node, event: InputEvent, _s: int, source: CollisionObject2D) -> void:
 	if event is InputEventMouseButton && event.button_mask & MOUSE_BUTTON_LEFT:
-		source.queue_free()
+		var sprite: Sprite2D = source.get_node("Sprite2D")
+		sprite.texture = book_texture
+		var tween = get_tree().create_tween()
+		tween.tween_property(sprite, "scale", Vector2(), 1.0)
+		tween.tween_callback(source.queue_free)
+		source.input_pickable = false
+		source.get_node("Clickbox").input_pickable = false
 		clicked_pages += 1
 		progress_label.text = str(clicked_pages) + " / " + str(GameManager.print_quantity)
 		if clicked_pages >= GameManager.print_quantity:

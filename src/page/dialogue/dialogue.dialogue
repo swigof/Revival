@@ -8,10 +8,8 @@ Harry: I certainly hope to make something doing this work.
 Tom: Of course my friend, but there's more to it than that isn't there?
 Harry: There certainly is.
 Harry: In any case, what were you thinking to press first?
-- The Art of Fine Printing \n 20 copies \n +1 integrity | +2$ per book
-	do print_integrity = 1
-	do print_wealth = 2
-	do print_quantity = 20
+- The Art of Fine Printing \n {{get_print_text("first")}}
+	do set_print("first")
 Harry: We'll get right to it then.
 => END
 
@@ -39,29 +37,18 @@ Harry: What should we spend the earnings on?
 => choice
 ~ choice_print
 Harry: What's our next print run?
-if GameManager.sequence_stage == 10
-	- Cee's tripe recommendation \n 200 copies \n -2 integrity | +1$ per book
-		do print_integrity = -2
-		do print_wealth = 1
-		do print_quantity = 200
-		do printed_slop = true
-	- Mass market book \n 100 copies \n -1 integrity | +1$ per book
-		do print_integrity = -1
-		do print_wealth = 1
-		do print_quantity = 100
-	- Book from local author \n 20 copies \n +2$ per book
-		do print_integrity = 0
-		do print_wealth = 2
-		do print_quantity = 20
+if sequence_stage == 10
+	- Cee's tripe recommendation \n {{get_print_text("cees_rec")}}
+		do set_print("cees_rec")
+	- Mass market book \n {{get_print_text("mass_market")}}
+		do set_print("mass_market")
+	- Book from local author \n {{get_print_text("local_author")}}
+		do set_print("local_author")
 else
-	- Mass market book \n 100 copies \n -1 integrity | +1$ per book
-		do print_integrity = -1
-		do print_wealth = 1
-		do print_quantity = 100
-	- Book from local author \n 20 copies \n +2$ per book
-		do print_integrity = 0
-		do print_wealth = 2
-		do print_quantity = 20
+	- Mass market book \n {{get_print_text("mass_market")}}
+		do set_print("mass_market")
+	- Book from local author \n {{get_print_text("local_author")}}
+		do set_print("local_author")
 => END
 
 ~ dialogue2

@@ -6,7 +6,7 @@ var sequence_stage = 0
 var total_earnings = 0
 var page_launch_time = 0.5
 
-var print_wealth = 0
+var print_value = 0
 var print_integrity = 0
 var print_quantity = 0
 
@@ -23,6 +23,47 @@ const sequence: Array[String] = [
 	"dialogue4", "choice_start", "print", "dialogue5", "credits"
 ]
 const no_ui_stages = ["cover", "credits", "end"]
+const print_bases = {
+	"mass_market": {
+		"value": 1,
+		"integrity": -1,
+		"quantity": 100
+	},
+	"cees_rec": {
+		"value": 1,
+		"integrity": -2,
+		"quantity": 200
+	},
+	"local_author": {
+		"value": 2,
+		"integrity": 0,
+		"quantity": 20
+	},
+	"first": {
+		"value": 2,
+		"integrity": 1,
+		"quantity": 20
+	}
+}
+
+func get_print_text(option: String) -> String:
+	var print_base = print_bases[option]
+	var option_value = print_base.value
+	var option_integrity = print_base.integrity
+	var option_quantity = print_base.quantity
+	var text = str(option_quantity) + " copies \n "
+	if option_integrity != 0:
+		if option_integrity > 0:
+			text += "+"
+		text += str(option_integrity) + " integrity | "
+	text += "+" + str(option_value) + "$ per book"
+	return text
+
+func set_print(option: String) -> void:
+	var print_base = print_bases[option]
+	print_value = print_base["value"]
+	print_integrity = print_base["integrity"]
+	print_quantity = print_base["quantity"]
 
 func reset_game() -> void:
 	integrity = 0
@@ -30,7 +71,7 @@ func reset_game() -> void:
 	sequence_stage = 0
 	total_earnings = 0
 	page_launch_time = 0.5
-	print_wealth = 0
+	print_value = 0
 	print_integrity = 0
 	print_quantity = 0
 	printed_slop = false
@@ -45,9 +86,9 @@ func increment_stage() -> String:
 	return get_stage()
 
 func apply_print_changes() -> void:
-	update_wealth(print_wealth * print_quantity)
+	update_wealth(print_value * print_quantity)
 	update_integrity(print_integrity)
-	print_wealth = 0
+	print_value = 0
 	print_integrity = 0
 	print_quantity = 0
 

@@ -36,4 +36,7 @@ func _ready() -> void:
 	pass
 
 func start() -> void:
+	get_tree().create_timer(2).timeout.connect(on_timeout)
+
+func on_timeout() -> void:
 	_finish()

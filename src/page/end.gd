@@ -12,4 +12,7 @@ func _ready() -> void:
 	add_child(label)
 
 func start() -> void:
+	get_tree().create_timer(1).timeout.connect(on_timeout)
+
+func on_timeout() -> void:
 	_finish()

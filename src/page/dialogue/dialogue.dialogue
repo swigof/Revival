@@ -32,7 +32,7 @@ Tom: (Daisy...)
 Harry: The money from the book sales is in Tom.
 ~ choice
 Harry: What should we spend the earnings on?
-- Done
+- ~~~~\nDone\n~~~~
 	=> choice_print
 => choice
 ~ choice_print

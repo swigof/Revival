@@ -8,9 +8,10 @@ Harry: I certainly hope to make something doing this work.
 Tom: Of course my friend, but there's more to it than that isn't there?
 Harry: There certainly is.
 Harry: In any case, what were you thinking to press first?
-- The Art of Fine Printing \n 10 copies \n +1 integrity | +10$ per book
-	do GameManager.next_print_integrity = 1
-	do GameManager.next_print_wealth = 100
+- The Art of Fine Printing \n 20 copies \n +1 integrity | +2$ per book
+	do print_integrity = 1
+	do print_wealth = 2
+	do print_quantity = 20
 Harry: We'll get right to it then.
 => END
 
@@ -38,7 +39,29 @@ Harry: What should we spend the earnings on?
 => choice
 ~ choice_print
 Harry: What's our next print run?
-- Something
+if GameManager.sequence_stage == 10
+	- Cee's tripe recommendation \n 200 copies \n -2 integrity | +1$ per book
+		do print_integrity = -2
+		do print_wealth = 1
+		do print_quantity = 200
+		do printed_slop = true
+	- Mass market book \n 100 copies \n -1 integrity | +1$ per book
+		do print_integrity = -1
+		do print_wealth = 1
+		do print_quantity = 100
+	- Book from local author \n 20 copies \n +2$ per book
+		do print_integrity = 0
+		do print_wealth = 2
+		do print_quantity = 20
+else
+	- Mass market book \n 100 copies \n -1 integrity | +1$ per book
+		do print_integrity = -1
+		do print_wealth = 1
+		do print_quantity = 100
+	- Book from local author \n 20 copies \n +2$ per book
+		do print_integrity = 0
+		do print_wealth = 2
+		do print_quantity = 20
 => END
 
 ~ dialogue2

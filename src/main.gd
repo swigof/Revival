@@ -74,6 +74,8 @@ func _create_page() -> Page:
 	elif stage == "credits":
 		next_page = Credits.new()
 	else:
+		if stage == "choice_start":
+			GameManager.apply_print_changes()
 		next_page = DialoguePage.new()
 		next_page.title = stage
 	return next_page

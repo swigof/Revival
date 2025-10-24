@@ -43,7 +43,7 @@ if true
 		do purchase_upgrade("distribution")
 	- {{get_upgrade_text("final")}}
 		do purchase_upgrade("final")
-	- ~~~~\nDone\n~~~~
+	- Done
 		=> choice_print
 	Harry: [[Alright.|I'll get right to it.|Sure thing Tom.]]
 => choice

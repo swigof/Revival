@@ -52,7 +52,7 @@ Harry: What's our next print run?
 if sequence_stage == 10
 	- Cee's tripe recommendation \n {{get_print_text("cees_rec")}}
 		do set_print("cees_rec")
-		do GameManager.printed_slop = true
+		do printed_slop = true
 	- Book from local author \n {{get_print_text("local_author")}}
 		do set_print("local_author")
 else
@@ -112,7 +112,7 @@ Tom: I didn't think you would come.
 Daisy: I didn't think so either but our friends have a way of convincing.
 Daisy: I suppose you haven't planned this party as a final farewell to them all before dissapearing into your marriage.
 Tom: Daisy nothing has changed. Nothing will change.
-if GameManager.printed_slop
+if printed_slop
 	Daisy: ...I read your new book.
 	Tom: You did?
 	Tom: Oh please Daisy you must tell me what you think.
@@ -127,7 +127,7 @@ else
 => END
 
 ~ dialogue5
-if GameManager.integrity >= 3
+if integrity >= 3
 	Tom: Eating up here reminds me of something.
 	Tom: The private space, the fine wine... Infinite riches in a little room.
 	Tom: An alluring sparkle eyed woman.
@@ -139,12 +139,12 @@ Tom: Oh.
 Cee: He's arranged such a kind gift for us.
 Tom: Yes, he has hasn't he.
 Cee: You will accept it won't you?
-if GameManager.integrity < 3
+if integrity < 3
 	Tom: Is that what you want?
 	Cee: Of course. Your father is a perfectly kind man, you should do no better than to accept his gift.
 	Tom: So I shall.
 	Tom and Cee eventually get married and go to spend the winter at Tom's father's.
-	if GameManager.total_earnings >= 10000
+	if held_collection == true
 		Rufus Collier is shocked on hearing the news that his son's press has been quite lucrative.
 		He offers to further invest into the business, expanding its operations.
 		Tom's press becomes a household name and he prints what the people want to read.
@@ -181,6 +181,11 @@ Tom continues his work at the press, making luxury books that his friends write 
 Daisy becomes pregnant and eventually gives birth to a healthy baby boy.
 They live happily ever after.
 => END
+
+
+
+
+# UNUSED
 
 ~ game_over_integrity
 An opportunity arises with one of Cee's friends to sell the press.

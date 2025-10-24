@@ -221,14 +221,14 @@ func increment_stage() -> String:
 		sequence_stage = 0
 	return get_stage()
 
-func apply_print_changes() -> void:
-	update_wealth(print_value * print_quantity)
-	update_integrity(print_integrity)
+func apply_print_changes(emit: bool = true) -> void:
+	update_wealth(print_value * print_quantity, emit)
+	update_integrity(print_integrity, emit)
 	print_value = 0
 	print_integrity = 0
 	print_quantity = 0
 
-func update_wealth(amount: int) -> void:
+func update_wealth(amount: int, emit: bool = true) -> void:
 	if amount == 0:
 		return
 	if amount > 0:
@@ -238,9 +238,10 @@ func update_wealth(amount: int) -> void:
 		wealth = max_wealth
 	elif wealth < 0:
 		wealth = 0
-	wealth_changed.emit()
+	if emit:
+		wealth_changed.emit()
 
-func update_integrity(amount: int) -> void:
+func update_integrity(amount: int, emit: bool = true) -> void:
 	if amount == 0:
 		return
 	integrity += amount
@@ -248,4 +249,5 @@ func update_integrity(amount: int) -> void:
 		integrity = max_integrity
 	elif integrity < 0:
 		integrity = 0
-	integrity_changed.emit()
+	if emit:
+		integrity_changed.emit()

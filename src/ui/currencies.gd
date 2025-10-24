@@ -3,6 +3,8 @@ extends Node
 func _ready() -> void:
 	_update_wealth()
 	_update_integrity_orbs()
+	GameManager.wealth_changed.connect(_update_wealth)
+	GameManager.integrity_changed.connect(_update_integrity_orbs)
 
 func _update_wealth() -> void:
 	$Wealth.text = str(GameManager.wealth) + "$"

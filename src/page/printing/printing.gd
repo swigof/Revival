@@ -8,6 +8,7 @@ var started = false
 var page_time_acc = 0
 var progress_label = Label.new()
 var page_container = Container.new()
+var hitbox_radius = 0
 
 func _ready() -> void:
 	progress_label.text = "0 / " + str(GameManager.print_quantity)
@@ -27,6 +28,7 @@ func _process(delta: float) -> void:
 		return
 	if launched_pages < float(GameManager.print_quantity) / GameManager.book_production:
 		var paper: RigidBody2D = paper_scene.instantiate()
+		paper.position = _get_random_point(paper.get_node("Hitbox").shape.radius + 5)
 		paper.apply_impulse(Vector2(randf_range(-2000, 2000), randf_range(-2000, 2000)))
 		paper.apply_torque_impulse(randf_range(-5, 5))
 		paper.get_node("Clickbox").input_event.connect(_on_paper_input_event.bind(paper))
@@ -34,6 +36,15 @@ func _process(delta: float) -> void:
 		SoundManager.play_paper_throw_sound()
 		launched_pages += 1
 		page_time_acc -= GameManager.page_launch_time
+
+func _get_random_point(padding: float) -> Vector2:
+	var left = -360 + padding
+	var right = 360 - padding
+	var top = -360 + padding
+	var bottom = 360 - padding
+	var x = randf_range(left, right)
+	var y = randf_range(top, bottom)
+	return Vector2(x, y)
 
 func _on_paper_input_event(_v: Node, event: InputEvent, _s: int, source: CollisionObject2D) -> void:
 	if event is not InputEventMouseButton && !GameManager.held_collection:

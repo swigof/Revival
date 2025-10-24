@@ -19,7 +19,7 @@ gravity_scale = 0.0
 inertia = 1.0
 linear_damp = 2.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xyw7y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -57,14 +57,14 @@ const upgrades = {
 			"text": "+100% page output speed",
 			"cost_wealth": 100,
 			"cost_integrity": 0,
-			"value": 0.25
+			"value": 2
 		},
 		{
 			"name": "Linotype machine",
 			"text": "+100% page output speed",
 			"cost_wealth": 100,
 			"cost_integrity": 0,
-			"value": 0.125
+			"value": 2
 		}
 	],
 	"press": [
@@ -80,7 +80,7 @@ const upgrades = {
 			"text": "+100% book production",
 			"cost_wealth": 100,
 			"cost_integrity": 0,
-			"value": 4
+			"value": 2
 		}
 	],
 	"distribution": [
@@ -96,7 +96,7 @@ const upgrades = {
 			"text": "+100% print run size",
 			"cost_wealth": 100,
 			"cost_integrity": 1,
-			"value": 3.0
+			"value": 2
 		}
 	],
 	"rights": [
@@ -109,10 +109,10 @@ const upgrades = {
 		},
 		{
 			"name": "Expanded mass market book rights",
-			"text": "+50% mass market book value",
+			"text": "+100% mass market book value",
 			"cost_wealth": 100,
 			"cost_integrity": 1,
-			"value": 1.5
+			"value": 2
 		},
 	],
 	"final": [
@@ -121,7 +121,11 @@ const upgrades = {
 			"text": "+900% print run size \n +100% page output speed \n Allow held down page collection",
 			"cost_wealth": 100,
 			"cost_integrity": 2,
-			"value": true
+			"value": {
+				"quantity_modifier_mult": 10,
+				"page_launch_mult": 2,
+				"held": true
+			}
 		}
 	]
 }
@@ -170,22 +174,22 @@ func purchase_upgrade(upgrade_type: String) -> void:
 		return
 	var upgrade = upgrade_stages[upgrade_index]
 	if upgrade_type == "type":
-		page_launch_time = upgrade.value
+		page_launch_time /= upgrade.value
 	elif upgrade_type == "press":
-		book_production = upgrade.value
+		book_production *= upgrade.value
 	elif upgrade_type == "distribution":
-		quantity_modifier = upgrade.value
+		quantity_modifier *= upgrade.value
 	elif upgrade_type == "rights":
 		if upgrade_index == 0:
-			book_value_modifiers["cees_rec"] = upgrade.value
-			book_value_modifiers["mass_market"] = upgrade.value
-			book_value_modifiers["local_author"] = upgrade.value
+			book_value_modifiers["cees_rec"] *= upgrade.value
+			book_value_modifiers["mass_market"] *= upgrade.value
+			book_value_modifiers["local_author"] *= upgrade.value
 		else:
-			book_value_modifiers["mass_market"] = upgrade.value
+			book_value_modifiers["mass_market"] *= upgrade.value
 	elif upgrade_type == "final":
-		quantity_modifier *= 10
-		page_launch_time = page_launch_time / 2
-		held_collection = true
+		quantity_modifier *= upgrade.value.quantity_modifier_mult
+		page_launch_time /= upgrade.value.page_launch_mult
+		held_collection = upgrade.value.held
 	update_wealth(-upgrade.cost_wealth)
 	update_integrity(-upgrade.cost_integrity)
 	upgrade_tracker[upgrade_type] += 1

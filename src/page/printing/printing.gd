@@ -36,7 +36,9 @@ func _process(delta: float) -> void:
 		page_time_acc -= GameManager.page_launch_time
 
 func _on_paper_input_event(_v: Node, event: InputEvent, _s: int, source: CollisionObject2D) -> void:
-	if event is InputEventMouseButton && event.button_mask & MOUSE_BUTTON_LEFT:
+	if event is not InputEventMouseButton && !GameManager.held_collection:
+		return
+	if event.button_mask & MOUSE_BUTTON_LEFT:
 		var sprite: Sprite2D = source.get_node("Sprite2D")
 		sprite.texture = book_texture
 		var tween = get_tree().create_tween()

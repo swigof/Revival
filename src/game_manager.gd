@@ -5,6 +5,10 @@ var wealth: int = 0
 var sequence_stage = 0
 var total_earnings = 0
 var page_launch_time = 0.5
+var book_production = 1
+var quantity_modifier = 1.0
+var book_value_modifiers = {"first": 1.0, "cees_rec": 1.0, "mass_market": 1.0, "local_author": 1.0}
+var held_collection = false
 var upgrade_tracker = {"type":0, "press":0, "distribution":0, "rights":0, "final":0}
 
 var print_value = 0
@@ -148,9 +152,9 @@ func _is_at_final() -> bool:
 
 func get_print_text(option: String) -> String:
 	var print_base = print_bases[option]
-	var option_value = print_base.value
+	var option_value = int(print_base.value * book_value_modifiers[option])
 	var option_integrity = print_base.integrity
-	var option_quantity = print_base.quantity
+	var option_quantity = int(print_base.quantity * quantity_modifier)
 	var text = str(option_quantity) + " copies \n "
 	if option_integrity != 0:
 		if option_integrity > 0:
@@ -161,9 +165,9 @@ func get_print_text(option: String) -> String:
 
 func set_print(option: String) -> void:
 	var print_base = print_bases[option]
-	print_value = print_base["value"]
+	print_value = int(print_base["value"] * book_value_modifiers[option])
 	print_integrity = print_base["integrity"]
-	print_quantity = print_base["quantity"]
+	print_quantity = int(print_base["quantity"] * quantity_modifier)
 
 func reset_game() -> void:
 	integrity = 0
@@ -175,6 +179,10 @@ func reset_game() -> void:
 	print_integrity = 0
 	print_quantity = 0
 	printed_slop = false
+	book_production = 1
+	quantity_modifier = 1.0
+	book_value_modifiers = {"first": 1.0, "cees_rec": 1.0, "mass_market": 1.0, "local_author": 1.0}
+	held_collection = false
 	upgrade_tracker = {"type":0, "press":0, "distribution":0, "rights":0, "final":0}
 
 func get_stage() -> String:

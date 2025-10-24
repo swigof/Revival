@@ -239,7 +239,7 @@ scale = Vector2(0.3076389, 0.30763888)
 texture = ExtResource("5_iga5p")
 
 [node name="Daisy" type="Sprite2D" parent="."]
-position = Vector2(153, 392)
+position = Vector2(153, 386)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_cm2ps")
 
@@ -249,7 +249,7 @@ scale = Vector2(0.34236118, 0.34236115)
 texture = ExtResource("7_yrjpw")
 
 [node name="Tom" type="Sprite2D" parent="."]
-position = Vector2(146, 382)
+position = Vector2(146, 376.00003)
 scale = Vector2(0.3340278, 0.3340278)
 texture = ExtResource("8_hnnfx")
 

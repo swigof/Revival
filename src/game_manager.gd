@@ -41,7 +41,7 @@ const print_bases = {
 	},
 	"local_author": {
 		"value": 2,
-		"integrity": 0,
+		"integrity": 1,
 		"quantity": 20
 	},
 	"first": {

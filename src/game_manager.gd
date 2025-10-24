@@ -5,7 +5,7 @@ var wealth: int = 0
 var sequence_stage = 0
 var total_earnings = 0
 var page_launch_time = 0.5
-var book_production = 1
+var book_production = 10
 var quantity_modifier = 1.0
 var book_value_modifiers = {"first": 1.0, "cees_rec": 1.0, "mass_market": 1.0, "local_author": 1.0}
 var held_collection = false
@@ -30,24 +30,24 @@ const sequence: Array[String] = [
 const no_ui_stages = ["cover", "credits", "end"]
 const print_bases = {
 	"mass_market": {
-		"value": 1,
+		"value": 3,
 		"integrity": -1,
-		"quantity": 100
+		"quantity": 500
 	},
 	"cees_rec": {
-		"value": 1,
+		"value": 3,
 		"integrity": -2,
-		"quantity": 200
+		"quantity": 750
 	},
 	"local_author": {
-		"value": 2,
+		"value": 5,
 		"integrity": 1,
-		"quantity": 20
+		"quantity": 200
 	},
 	"first": {
-		"value": 2,
+		"value": 10,
 		"integrity": 1,
-		"quantity": 20
+		"quantity": 100
 	}
 }
 const upgrades = {
@@ -55,14 +55,14 @@ const upgrades = {
 		{
 			"name": "Monotype machine",
 			"text": "+100% page output speed",
-			"cost_wealth": 100,
+			"cost_wealth": 1000,
 			"cost_integrity": 0,
 			"value": 2
 		},
 		{
 			"name": "Linotype machine",
 			"text": "+100% page output speed",
-			"cost_wealth": 100,
+			"cost_wealth": 2000,
 			"cost_integrity": 0,
 			"value": 2
 		}
@@ -71,14 +71,14 @@ const upgrades = {
 		{
 			"name": "Koenig press",
 			"text": "+100% book production",
-			"cost_wealth": 100,
+			"cost_wealth": 1000,
 			"cost_integrity": 0,
 			"value": 2
 		},
 		{
 			"name": "Cylinder press",
 			"text": "+100% book production",
-			"cost_wealth": 100,
+			"cost_wealth": 2000,
 			"cost_integrity": 0,
 			"value": 2
 		}
@@ -86,44 +86,44 @@ const upgrades = {
 	"distribution": [
 		{
 			"name": "Bookstore partnership",
-			"text": "+50% print run size",
-			"cost_wealth": 100,
+			"text": "+33% print run size",
+			"cost_wealth": 1000,
 			"cost_integrity": 0,
-			"value": 1.5
+			"value": 1.333334
 		},
 		{
 			"name": "Drugstore partnership",
-			"text": "+100% print run size",
-			"cost_wealth": 100,
+			"text": "+50% print run size",
+			"cost_wealth": 2000,
 			"cost_integrity": 1,
-			"value": 2
+			"value": 1.5
 		}
 	],
 	"rights": [
 		{
 			"name": "Expanded author network",
 			"text": "+50% book value",
-			"cost_wealth": 100,
+			"cost_wealth": 1000,
 			"cost_integrity": 0,
 			"value": 1.5
 		},
 		{
 			"name": "Expanded mass market book rights",
-			"text": "+100% mass market book value",
-			"cost_wealth": 100,
+			"text": "+50% mass market book value",
+			"cost_wealth": 2000,
 			"cost_integrity": 1,
-			"value": 2
+			"value": 1.5
 		},
 	],
 	"final": [
 		{
-			"name": "Lithographic offset press",
-			"text": "+900% print run size \n +100% page output speed \n Allow held down page collection",
-			"cost_wealth": 100,
+			"name": "Lithographic offset printing",
+			"text": "+400% print run size \n +25% page output speed \n Allow held down page collection",
+			"cost_wealth": 3000,
 			"cost_integrity": 2,
 			"value": {
-				"quantity_modifier_mult": 10,
-				"page_launch_mult": 2,
+				"quantity_modifier_mult": 5,
+				"page_launch_mult": 1.25,
 				"held": true
 			}
 		}
@@ -185,6 +185,7 @@ func purchase_upgrade(upgrade_type: String) -> void:
 			book_value_modifiers["mass_market"] *= upgrade.value
 			book_value_modifiers["local_author"] *= upgrade.value
 		else:
+			book_value_modifiers["cees_rec"] *= upgrade.value
 			book_value_modifiers["mass_market"] *= upgrade.value
 	elif upgrade_type == "final":
 		quantity_modifier *= upgrade.value.quantity_modifier_mult
@@ -210,7 +211,7 @@ func reset_game() -> void:
 	print_integrity = 0
 	print_quantity = 0
 	printed_slop = false
-	book_production = 1
+	book_production = 10
 	quantity_modifier = 1.0
 	book_value_modifiers = {"first": 1.0, "cees_rec": 1.0, "mass_market": 1.0, "local_author": 1.0}
 	held_collection = false

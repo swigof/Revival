@@ -41,7 +41,7 @@ func _on_next_page_button_input_event(_viewport: Node, event: InputEvent, _shape
 		page_above.play()
 		page_below.play()
 		var stage = GameManager.increment_stage()
-		if stage == "choice_start":
+		if stage == "choice_start" || stage == "dialogue5":
 			GameManager.apply_print_changes(false)
 		if stage == "cover":
 			GameManager.reset_game()

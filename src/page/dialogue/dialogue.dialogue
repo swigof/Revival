@@ -139,7 +139,7 @@ Tom: Oh.
 Cee: He's arranged such a kind gift for us.
 Tom: Yes, he has hasn't he.
 Cee: You will accept it won't you?
-if integrity < 3
+if integrity < 4
 	Tom: Is that what you want?
 	Cee: Of course. Your father is a perfectly kind man, you should do no better than to accept his gift.
 	Tom: So I shall.

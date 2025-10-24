@@ -118,7 +118,7 @@ const upgrades = {
 	"final": [
 		{
 			"name": "Lithographic offset press",
-			"text": "+1000% print run size \n +100% page output speed \n Allow held down page collection",
+			"text": "+900% print run size \n +100% page output speed \n Allow held down page collection",
 			"cost_wealth": 100,
 			"cost_integrity": 2,
 			"value": true
@@ -152,7 +152,7 @@ func _is_at_final() -> bool:
 
 func get_print_text(option: String) -> String:
 	var print_base = print_bases[option]
-	var option_value = int(print_base.value * book_value_modifiers[option])
+	var option_value = print_base.value * book_value_modifiers[option]
 	var option_integrity = print_base.integrity
 	var option_quantity = int(print_base.quantity * quantity_modifier)
 	var text = str(option_quantity) + " copies \n "
@@ -163,9 +163,36 @@ func get_print_text(option: String) -> String:
 	text += "+" + str(option_value) + "$ per book"
 	return text
 
+func purchase_upgrade(upgrade_type: String) -> void:
+	var upgrade_index = upgrade_tracker[upgrade_type]
+	var upgrade_stages = upgrades[upgrade_type]
+	if len(upgrade_stages) <= upgrade_index:
+		return
+	var upgrade = upgrade_stages[upgrade_index]
+	if upgrade_type == "type":
+		page_launch_time = upgrade.value
+	elif upgrade_type == "press":
+		book_production = upgrade.value
+	elif upgrade_type == "distribution":
+		quantity_modifier = upgrade.value
+	elif upgrade_type == "rights":
+		if upgrade_index == 0:
+			book_value_modifiers["cees_rec"] = upgrade.value
+			book_value_modifiers["mass_market"] = upgrade.value
+			book_value_modifiers["local_author"] = upgrade.value
+		else:
+			book_value_modifiers["mass_market"] = upgrade.value
+	elif upgrade_type == "final":
+		quantity_modifier *= 10
+		page_launch_time = page_launch_time / 2
+		held_collection = true
+	update_wealth(-upgrade.cost_wealth)
+	update_integrity(-upgrade.cost_integrity)
+	upgrade_tracker[upgrade_type] += 1
+
 func set_print(option: String) -> void:
 	var print_base = print_bases[option]
-	print_value = int(print_base["value"] * book_value_modifiers[option])
+	print_value = print_base["value"] * book_value_modifiers[option]
 	print_integrity = print_base["integrity"]
 	print_quantity = int(print_base["quantity"] * quantity_modifier)
 

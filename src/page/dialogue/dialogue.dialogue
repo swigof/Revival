@@ -30,24 +30,29 @@ Tom: (Daisy...)
 
 ~ choice_start
 Harry: The money from the book sales is in Tom.
-~ choice
 Harry: What should we spend the earnings on?
+~ choice
 if true
 	- {{get_upgrade_text("type")}}
+		do purchase_upgrade("type")
 	- {{get_upgrade_text("press")}}
+		do purchase_upgrade("press")
 	- {{get_upgrade_text("rights")}}
+		do purchase_upgrade("rights")
 	- {{get_upgrade_text("distribution")}}
+		do purchase_upgrade("distribution")
 	- {{get_upgrade_text("final")}}
+		do purchase_upgrade("final")
 	- ~~~~\nDone\n~~~~
-	=> choice_print
+		=> choice_print
+	Harry: [[Alright.|I'll get right to it.|Sure thing Tom.]]
 => choice
 ~ choice_print
 Harry: What's our next print run?
 if sequence_stage == 10
 	- Cee's tripe recommendation \n {{get_print_text("cees_rec")}}
 		do set_print("cees_rec")
-	- Mass market book \n {{get_print_text("mass_market")}}
-		do set_print("mass_market")
+		do GameManager.printed_slop = true
 	- Book from local author \n {{get_print_text("local_author")}}
 		do set_print("local_author")
 else

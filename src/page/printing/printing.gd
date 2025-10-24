@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	page_time_acc += delta
 	if page_time_acc < GameManager.page_launch_time:
 		return
-	if launched_pages < GameManager.print_quantity:
+	if launched_pages < float(GameManager.print_quantity) / GameManager.book_production:
 		var paper: RigidBody2D = paper_scene.instantiate()
 		paper.apply_impulse(Vector2(randf_range(-2000, 2000), randf_range(-2000, 2000)))
 		paper.apply_torque_impulse(randf_range(-5, 5))
@@ -44,10 +44,11 @@ func _on_paper_input_event(_v: Node, event: InputEvent, _s: int, source: Collisi
 		tween.tween_callback(source.queue_free)
 		source.input_pickable = false
 		source.get_node("Clickbox").input_pickable = false
-		clicked_pages += 1
-		progress_label.text = str(clicked_pages) + " / " + str(GameManager.print_quantity)
+		clicked_pages += GameManager.book_production
 		if clicked_pages >= GameManager.print_quantity:
+			clicked_pages = GameManager.print_quantity
 			_finish()
+		progress_label.text = str(clicked_pages) + " / " + str(GameManager.print_quantity)
 
 func start() -> void:
 	started = true

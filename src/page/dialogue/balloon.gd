@@ -108,6 +108,8 @@ func apply_dialogue_line() -> void:
 
 	responses_menu.hide()
 	responses_menu.responses = dialogue_line.responses
+	
+	_apply_portrait(dialogue_line.character, !dialogue_line.responses.is_empty())
 
 	# Show our balloon
 	balloon.show()
@@ -136,6 +138,15 @@ func apply_dialogue_line() -> void:
 		balloon.focus_mode = Control.FOCUS_ALL
 		balloon.grab_focus()
 
+
+func _apply_portrait(character: String, is_response: bool) -> void:
+	get_node("Cee").visible = false
+	get_node("Daisy").visible = false
+	get_node("Harry").visible = false
+	get_node("Tom").visible = false
+	if character == null || character not in ["Cee", "Daisy", "Harry", "Tom"] || is_response:
+		return
+	get_node(character).visible = true
 
 ## Go to the next line
 func next(next_id: String) -> void:

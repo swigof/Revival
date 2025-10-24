@@ -1,9 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://cebj8sgiana8i"]
+[gd_scene load_steps=18 format=3 uid="uid://cebj8sgiana8i"]
 
 [ext_resource type="Script" uid="uid://cct2cx2duk4x0" path="res://src/page/dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="FontFile" uid="uid://dksv2awalnhkv" path="res://assets/fonts/LibreCaslonText-Bold.ttf" id="2_3nytx"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="Texture2D" uid="uid://dgrw0qqakugon" path="res://assets/portraits/cee.png" id="5_iga5p"]
+[ext_resource type="Texture2D" uid="uid://c1r0annlepi3y" path="res://assets/portraits/daisy.png" id="6_cm2ps"]
+[ext_resource type="Texture2D" uid="uid://dyc5i2s3p5lip" path="res://assets/portraits/harry.png" id="7_yrjpw"]
+[ext_resource type="Texture2D" uid="uid://djccxg2xba3pl" path="res://assets/portraits/tom.png" id="8_hnnfx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -183,7 +187,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_3nytx")
-text = "Dialogue..."
+text = "We've known eachother so briefly and yet it's as if even with an eternity of time, the feeling would be the same."
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(20, 10)
@@ -228,6 +232,26 @@ text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+
+[node name="Cee" type="Sprite2D" parent="."]
+position = Vector2(147.30278, 384.75)
+scale = Vector2(0.3076389, 0.30763888)
+texture = ExtResource("5_iga5p")
+
+[node name="Daisy" type="Sprite2D" parent="."]
+position = Vector2(153, 392)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_cm2ps")
+
+[node name="Harry" type="Sprite2D" parent="."]
+position = Vector2(210.2861, 373.25)
+scale = Vector2(0.34236118, 0.34236115)
+texture = ExtResource("7_yrjpw")
+
+[node name="Tom" type="Sprite2D" parent="."]
+position = Vector2(146, 382)
+scale = Vector2(0.3340278, 0.3340278)
+texture = ExtResource("8_hnnfx")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

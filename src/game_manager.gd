@@ -5,6 +5,7 @@ var wealth: int = 0
 var sequence_stage = 0
 var total_earnings = 0
 var page_launch_time = 0.5
+var upgrade_tracker = {"type":0, "press":0, "distribution":0, "rights":0, "final":0}
 
 var print_value = 0
 var print_integrity = 0
@@ -45,6 +46,105 @@ const print_bases = {
 		"quantity": 20
 	}
 }
+const upgrades = {
+	"type": [
+		{
+			"name": "Monotype machine",
+			"text": "+100% page output speed",
+			"cost_wealth": 100,
+			"cost_integrity": 0,
+			"value": 0.25
+		},
+		{
+			"name": "Linotype machine",
+			"text": "+100% page output speed",
+			"cost_wealth": 100,
+			"cost_integrity": 0,
+			"value": 0.125
+		}
+	],
+	"press": [
+		{
+			"name": "Koenig press",
+			"text": "+100% book production",
+			"cost_wealth": 100,
+			"cost_integrity": 0,
+			"value": 2
+		},
+		{
+			"name": "Cylinder press",
+			"text": "+100% book production",
+			"cost_wealth": 100,
+			"cost_integrity": 0,
+			"value": 4
+		}
+	],
+	"distribution": [
+		{
+			"name": "Bookstore partnership",
+			"text": "+50% print run size",
+			"cost_wealth": 100,
+			"cost_integrity": 0,
+			"value": 1.5
+		},
+		{
+			"name": "Drugstore partnership",
+			"text": "+100% print run size",
+			"cost_wealth": 100,
+			"cost_integrity": 1,
+			"value": 3.0
+		}
+	],
+	"rights": [
+		{
+			"name": "Expanded author network",
+			"text": "+50% book value",
+			"cost_wealth": 100,
+			"cost_integrity": 0,
+			"value": 1.5
+		},
+		{
+			"name": "Expanded mass market book rights",
+			"text": "+50% mass market book value",
+			"cost_wealth": 100,
+			"cost_integrity": 1,
+			"value": 1.5
+		},
+	],
+	"final": [
+		{
+			"name": "Lithographic offset press",
+			"text": "+1000% print run size \n +100% page output speed \n Allow held down page collection",
+			"cost_wealth": 100,
+			"cost_integrity": 2,
+			"value": true
+		}
+	]
+}
+
+func get_upgrade_text(upgrade_type: String) -> String:
+	if upgrade_type == "final" && !_is_at_final():
+		return "[#hide]"
+	var upgrade_stages = upgrades[upgrade_type]
+	var upgrade_index = upgrade_tracker[upgrade_type]
+	if len(upgrade_stages) <= upgrade_index:
+		return "[#hide]"
+	var upgrade = upgrade_stages[upgrade_index]
+	var text = ""
+	if upgrade.cost_wealth > wealth:
+		text += "[#disable]"
+	text += upgrade.name + " \n "
+	if upgrade.cost_integrity != 0:
+		text += "-" + str(upgrade.cost_integrity) + " integrity | "
+	text += "-" + str(upgrade.cost_wealth) + "$ \n "
+	text += upgrade.text
+	return text
+
+func _is_at_final() -> bool:
+	return upgrade_tracker["type"] == len(upgrades["type"]) \
+		&& upgrade_tracker["press"] == len(upgrades["press"]) \
+		&& upgrade_tracker["distribution"] == len(upgrades["distribution"]) \
+		&& upgrade_tracker["rights"] == len(upgrades["rights"])
 
 func get_print_text(option: String) -> String:
 	var print_base = print_bases[option]
@@ -75,6 +175,7 @@ func reset_game() -> void:
 	print_integrity = 0
 	print_quantity = 0
 	printed_slop = false
+	upgrade_tracker = {"type":0, "press":0, "distribution":0, "rights":0, "final":0}
 
 func get_stage() -> String:
 	return sequence[sequence_stage]

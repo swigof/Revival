@@ -32,7 +32,13 @@ Tom: (Daisy...)
 Harry: The money from the book sales is in Tom.
 ~ choice
 Harry: What should we spend the earnings on?
-- ~~~~\nDone\n~~~~
+if true
+	- {{get_upgrade_text("type")}}
+	- {{get_upgrade_text("press")}}
+	- {{get_upgrade_text("rights")}}
+	- {{get_upgrade_text("distribution")}}
+	- {{get_upgrade_text("final")}}
+	- ~~~~\nDone\n~~~~
 	=> choice_print
 => choice
 ~ choice_print

@@ -155,12 +155,16 @@ func next(next_id: String) -> void:
 	if diag != null:
 		diag.responses = diag.responses.filter(_has_no_hide_tag)
 		for response in diag.responses:
-			if "disable" in response.tags:
+			if _has_disable_tag(response):
+				response.text = response.text.replace("[#disable]", "")
 				response.is_allowed = false
 	self.dialogue_line = diag
 
+func _has_disable_tag(response) -> bool:
+	return "disable" in response.tags or "[#disable]" in response.text
+
 func _has_no_hide_tag(response) -> bool:
-	return "hide" not in response.tags
+	return "hide" not in response.tags and "[#hide]" not in response.text
 
 #region Signals
 

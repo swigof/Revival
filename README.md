@@ -13,7 +13,10 @@ versions could also work
 
 ### Assets
 
-TODO
+Assets for the project can be downloaded from 
+[here](https://github.com/swigof/Revival/releases/download/1.0.0/assets.zip)
+
+The contents of the archive should be placed in a top level `assets` directory
 
 ### Addons
 

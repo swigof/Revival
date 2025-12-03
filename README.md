@@ -5,7 +5,7 @@ A short clicker game inspired by the 1932 public domain film The Animal Kingdom
 This was my first ever time using Godot and I'm quite happy with how the project turned out.
 There's certainly some improvements that could be made though.
 The script and scene structure took a little getting used to and I could have sub-scened more game elements.
-The monolithic game manager was born out of time pressure and outght to have be broken into multiple files.
+The monolithic game manager was born out of time pressure and ought to have been broken into multiple files.
 There's also some cleanup on various assets I wanted to do that I never got the time for.
 But otherwise, this simple game works well and was generally straightforward to make using only GDScript.
 Godot's a very robust and extensible engine and I look forward to using it more.

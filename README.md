@@ -14,7 +14,7 @@ Godot's a very robust and extensible engine and I look forward to using it more.
 
 ### Engine
 
-This project is configured for Godot 4.6 and was originally made with Godot 4.5.
+This project is configured for Godot 4.6 and was originally made with Godot 4.5
 
 ### Assets
 
@@ -25,11 +25,11 @@ The contents of the archive should be placed in a top level `assets` directory
 
 ### Addons
 
-This project depends on the
-[Dialogue Manager 3.8.1]
-(https://github.com/nathanhoad/godot_dialogue_manager/releases/tag/v3.8.1)
-addon.
-It should be installed in a top level `addons` directory.
+This project depends on
+[Dialogue Manager 3.10.4]
+(https://github.com/nathanhoad/godot_dialogue_manager/releases/tag/v3.10.4)
+
+It should be installed in a top level `addons` directory
 
 ## Builds
 

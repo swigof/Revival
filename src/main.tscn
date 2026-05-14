@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://mvfeujtkvhkc"]
+[gd_scene format=3 uid="uid://mvfeujtkvhkc"]
 
 [ext_resource type="SpriteFrames" uid="uid://xpba6qtmeqvf" path="res://src/flip_frames.tres" id="1_3cfgd"]
 [ext_resource type="Script" uid="uid://cqjlnwn7x0djg" path="res://src/main.gd" id="2_fyndt"]
@@ -16,62 +16,62 @@ size = Vector2(720, 100)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmhfv"]
 size = Vector2(100, 720)
 
-[node name="Root" type="Node2D"]
+[node name="Root" type="Node2D" unique_id=1213427529]
 script = ExtResource("2_fyndt")
 
-[node name="Page" type="AnimatedSprite2D" parent="."]
+[node name="Page" type="AnimatedSprite2D" parent="." unique_id=474469858]
 position = Vector2(363, 452)
 sprite_frames = ExtResource("1_3cfgd")
 
-[node name="PageBelow" type="AnimatedSprite2D" parent="Page"]
+[node name="PageBelow" type="AnimatedSprite2D" parent="Page" unique_id=163797440]
 clip_children = 1
 sprite_frames = ExtResource("3_kmhfv")
 
-[node name="PageAbove" type="AnimatedSprite2D" parent="Page"]
+[node name="PageAbove" type="AnimatedSprite2D" parent="Page" unique_id=1875671023]
 clip_children = 1
 sprite_frames = ExtResource("4_rlaii")
 
-[node name="NextPageButton" type="Area2D" parent="Page"]
+[node name="NextPageButton" type="Area2D" parent="Page" unique_id=1664350832]
 position = Vector2(298, 198)
 
-[node name="NextPageIcon" type="Sprite2D" parent="Page/NextPageButton"]
+[node name="NextPageIcon" type="Sprite2D" parent="Page/NextPageButton" unique_id=1002754390]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_fyndt")
 
-[node name="NextPageCollision" type="CollisionShape2D" parent="Page/NextPageButton"]
+[node name="NextPageCollision" type="CollisionShape2D" parent="Page/NextPageButton" unique_id=1880325432]
 scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_kmhfv")
 
-[node name="BorderCollision" type="StaticBody2D" parent="."]
+[node name="BorderCollision" type="StaticBody2D" parent="." unique_id=118507299]
 top_level = true
 
-[node name="Top" type="CollisionShape2D" parent="BorderCollision"]
+[node name="Top" type="CollisionShape2D" parent="BorderCollision" unique_id=1095364057]
 position = Vector2(360, -50)
 shape = SubResource("RectangleShape2D_rlaii")
 
-[node name="Bottom" type="CollisionShape2D" parent="BorderCollision"]
+[node name="Bottom" type="CollisionShape2D" parent="BorderCollision" unique_id=1095777908]
 position = Vector2(360, 770)
 shape = SubResource("RectangleShape2D_rlaii")
 
-[node name="Left" type="CollisionShape2D" parent="BorderCollision"]
+[node name="Left" type="CollisionShape2D" parent="BorderCollision" unique_id=1032464898]
 position = Vector2(-50, 360)
 shape = SubResource("RectangleShape2D_kmhfv")
 
-[node name="Right" type="CollisionShape2D" parent="BorderCollision"]
+[node name="Right" type="CollisionShape2D" parent="BorderCollision" unique_id=39494736]
 position = Vector2(770, 360)
 shape = SubResource("RectangleShape2D_kmhfv")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1186677990]
 stream = ExtResource("7_rlaii")
 autoplay = true
 bus = &"Music"
 
-[node name="FilmEffect" type="AnimatedSprite2D" parent="."]
+[node name="FilmEffect" type="AnimatedSprite2D" parent="." unique_id=1825603727]
 position = Vector2(-16, 437)
 scale = Vector2(1, 1.044)
 sprite_frames = ExtResource("6_kmhfv")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=932544867]
 position = Vector2(360, 360)
 
 [connection signal="animation_finished" from="Page" to="." method="_on_page_animation_finished"]

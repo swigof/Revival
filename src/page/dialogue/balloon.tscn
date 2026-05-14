@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cebj8sgiana8i"]
+[gd_scene format=3 uid="uid://cebj8sgiana8i"]
 
 [ext_resource type="Script" uid="uid://cct2cx2duk4x0" path="res://src/page/dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="FontFile" uid="uid://dksv2awalnhkv" path="res://assets/fonts/LibreCaslonText-Bold.ttf" id="2_3nytx"]
@@ -129,14 +129,14 @@ _data = {
 &"progress": SubResource("Animation_qkmqt")
 }
 
-[node name="ExampleBalloon" type="Control"]
+[node name="ExampleBalloon" type="Control" unique_id=201283241]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 720.0
 offset_bottom = 640.0
 script = ExtResource("1_36de5")
 
-[node name="Balloon" type="Control" parent="."]
+[node name="Balloon" type="Control" parent="." unique_id=1067467014]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -146,7 +146,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
 
-[node name="MarginContainer" type="MarginContainer" parent="Balloon"]
+[node name="MarginContainer" type="MarginContainer" parent="Balloon" unique_id=765196426]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -156,21 +156,21 @@ offset_top = -156.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer" unique_id=1929564900]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=626362415]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=1127891948]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1882208734]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=715129396]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
@@ -181,7 +181,7 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_a8ve6")]
+[node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=536946100 instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -189,23 +189,21 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_3nytx")
 text = "We've known eachother so briefly and yet it's as if even with an eternity of time, the feeling would be the same."
 
-[node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=630534976]
 custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Progress" type="Polygon2D" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control"]
+[node name="Progress" type="Polygon2D" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=1795100340]
 unique_name_in_owner = true
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, 0, 10, 10, 20, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control"]
-libraries = {
-&"": SubResource("AnimationLibrary_1337t")
-}
-autoplay = "progress"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=1569736428]
+libraries/ = SubResource("AnimationLibrary_1337t")
+autoplay = &"progress"
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" unique_id=1805498632 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -226,30 +224,30 @@ script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
 auto_focus_first_item = false
 
-[node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
+[node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=1067397773]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Response example"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=878220422]
 unique_name_in_owner = true
 
-[node name="Cee" type="Sprite2D" parent="."]
+[node name="Cee" type="Sprite2D" parent="." unique_id=693524462]
 position = Vector2(147.30278, 384.75)
 scale = Vector2(0.3076389, 0.30763888)
 texture = ExtResource("5_iga5p")
 
-[node name="Daisy" type="Sprite2D" parent="."]
+[node name="Daisy" type="Sprite2D" parent="." unique_id=162174961]
 position = Vector2(153, 386)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_cm2ps")
 
-[node name="Harry" type="Sprite2D" parent="."]
+[node name="Harry" type="Sprite2D" parent="." unique_id=1448651909]
 position = Vector2(210.2861, 373.25)
 scale = Vector2(0.34236118, 0.34236115)
 texture = ExtResource("7_yrjpw")
 
-[node name="Tom" type="Sprite2D" parent="."]
+[node name="Tom" type="Sprite2D" parent="." unique_id=254275440]
 position = Vector2(146, 376.00003)
 scale = Vector2(0.3340278, 0.3340278)
 texture = ExtResource("8_hnnfx")

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=28 format=3 uid="uid://c4syxg663x6fx"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://c4syxg663x6fx"]
 
 [ext_resource type="Texture2D" uid="uid://c5kk5kb7dqo7y" path="res://assets/film/film-effect00108000.png" id="1_hvcpd"]
 [ext_resource type="Texture2D" uid="uid://bk0tedmwa58fw" path="res://assets/film/film-effect00108008.png" id="9_cqcho"]

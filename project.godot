@@ -12,14 +12,14 @@ config_version=5
 
 config/name="Revival"
 run/main_scene="uid://mvfeujtkvhkc"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SoundManager="*res://src/sound_manager.gd"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameManager="*res://src/game_manager.gd"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [dialogue_manager]
 

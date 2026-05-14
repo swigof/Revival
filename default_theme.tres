@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://i0rxalflco8d"]
+[gd_resource type="Theme" format=3 uid="uid://i0rxalflco8d"]
 
 [ext_resource type="FontFile" uid="uid://dksv2awalnhkv" path="res://assets/fonts/LibreCaslonText-Bold.ttf" id="1_e7bfs"]
 

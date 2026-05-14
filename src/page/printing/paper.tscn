@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0by13oqy1r3v"]
+[gd_scene format=3 uid="uid://b0by13oqy1r3v"]
 
 [ext_resource type="Texture2D" uid="uid://bh5yusn1b4t57" path="res://assets/printing/text.png" id="1_f08s0"]
 
@@ -11,7 +11,7 @@ radius = 80.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyw7y"]
 size = Vector2(113, 150)
 
-[node name="Paper" type="RigidBody2D"]
+[node name="Paper" type="RigidBody2D" unique_id=533189523]
 collision_layer = 2
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_xyw7y")
@@ -19,15 +19,15 @@ gravity_scale = 0.0
 inertia = 1.0
 linear_damp = 2.0
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1615214435]
 shape = SubResource("CircleShape2D_xyw7y")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1616143951]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_f08s0")
 
-[node name="Clickbox" type="Area2D" parent="."]
+[node name="Clickbox" type="Area2D" parent="." unique_id=1429180031]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clickbox" unique_id=500393076]
 position = Vector2(-3.5, 0)
 shape = SubResource("RectangleShape2D_xyw7y")

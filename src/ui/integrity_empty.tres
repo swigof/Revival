@@ -1,4 +1,4 @@
-[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://13o1i4m6l1ix"]
+[gd_resource type="GradientTexture2D" format=3 uid="uid://13o1i4m6l1ix"]
 
 [ext_resource type="Gradient" uid="uid://b8kuw2njwdi63" path="res://src/ui/integrity_empty_gradient.tres" id="1_p424k"]
 

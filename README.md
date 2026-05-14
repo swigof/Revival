@@ -14,8 +14,7 @@ Godot's a very robust and extensible engine and I look forward to using it more.
 
 ### Engine
 
-The project was originally made with Godot 4.5-stable so that's the best version to use but newer 
-versions could also work
+This project is configured for Godot 4.6 and was originally made with Godot 4.5.
 
 ### Assets
 

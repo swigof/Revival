@@ -26,8 +26,7 @@ The contents of the archive should be placed in a top level `assets` directory
 ### Addons
 
 This project depends on
-[Dialogue Manager 3.10.4]
-(https://github.com/nathanhoad/godot_dialogue_manager/releases/tag/v3.10.4)
+[Dialogue Manager 3.10.4](https://github.com/nathanhoad/godot_dialogue_manager/releases/tag/v3.10.4)
 
 It should be installed in a top level `addons` directory
 

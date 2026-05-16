@@ -86,10 +86,10 @@ Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
 Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
 Button/styles/normal = SubResource("StyleBoxFlat_3nytx")
 Button/styles/pressed = SubResource("StyleBoxFlat_obwxa")
-MarginContainer/constants/margin_bottom = 15
+MarginContainer/constants/margin_bottom = 0
 MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30
-MarginContainer/constants/margin_top = 15
+MarginContainer/constants/margin_top = 23
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 RichTextLabel/constants/line_separation = 5
 
@@ -152,7 +152,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -156.0
+offset_top = -194.0
 grow_horizontal = 2
 grow_vertical = 0
 

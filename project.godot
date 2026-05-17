@@ -13,6 +13,8 @@ config_version=5
 config/name="Revival"
 run/main_scene="uid://mvfeujtkvhkc"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/stretch_mode=0
+boot_splash/image="uid://m14vkpg4m46b"
 config/icon="res://icon.svg"
 
 [autoload]

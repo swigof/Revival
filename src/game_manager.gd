@@ -70,14 +70,14 @@ const upgrades = {
 	"press": [
 		{
 			"name": "Koenig press",
-			"text": "+100% book production",
+			"text": "+100% books produced on collection",
 			"cost_wealth": 1000,
 			"cost_integrity": 0,
 			"value": 2
 		},
 		{
 			"name": "Cylinder press",
-			"text": "+100% book production",
+			"text": "+100% books produced on collection",
 			"cost_wealth": 2000,
 			"cost_integrity": 0,
 			"value": 2

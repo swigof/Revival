@@ -19,7 +19,7 @@ This project is configured for Godot 4.6 and was originally made with Godot 4.5
 ### Assets
 
 Assets for the project can be downloaded from 
-[here](https://github.com/swigof/Revival/releases/download/1.0.0/assets.zip)
+[here](https://github.com/swigof/Revival/releases/download/1.0.1/assets.zip)
 
 The contents of the archive should be placed in a top level `assets` directory
 

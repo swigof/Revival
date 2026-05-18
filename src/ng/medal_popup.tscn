@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://c8oksojhvygfc"]
+
+[ext_resource type="Script" uid="uid://0bplyqn3ac3d" path="res://src/ng/medal_popup.gd" id="1_wjkg8"]
+[ext_resource type="FontFile" uid="uid://dksv2awalnhkv" path="res://assets/fonts/LibreCaslonText-Bold.ttf" id="2_etydo"]
+[ext_resource type="Texture2D" uid="uid://m14vkpg4m46b" path="res://assets/favicon.png" id="3_dqf66"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_etydo"]
+content_margin_left = 30.0
+content_margin_right = 10.0
+bg_color = Color(0, 0, 0, 0.49803922)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_8dk46"]
+font = ExtResource("2_etydo")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjkg8"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqf66"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+
+[sub_resource type="Animation" id="Animation_etydo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelPanel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MedalPanel:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_wjkg8"]
+resource_name = "popup"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LabelPanel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(100, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 0.99999994)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MedalPanel:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(100, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6, 0.99999994)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a37tn"]
+_data = {
+&"RESET": SubResource("Animation_etydo"),
+&"popup": SubResource("Animation_wjkg8")
+}
+
+[node name="MedalPopup" type="SubViewportContainer" unique_id=264395444 node_paths=PackedStringArray("_animator", "_medal_icon", "_medal_label")]
+process_mode = 3
+texture_filter = 1
+offset_right = 200.0
+offset_bottom = 100.0
+mouse_filter = 2
+stretch = true
+script = ExtResource("1_wjkg8")
+_animator = NodePath("Animator")
+_medal_icon = NodePath("MedalPopupViewport/MedalPanel/MedalClipPanel/MedalIcon")
+_medal_label = NodePath("MedalPopupViewport/LabelPanel/LabelContainer/MedalLabel")
+
+[node name="MedalPopupViewport" type="SubViewport" parent="." unique_id=1672872362]
+process_mode = 3
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(200, 100)
+render_target_update_mode = 4
+
+[node name="LabelPanel" type="PanelContainer" parent="MedalPopupViewport" unique_id=46274964]
+process_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_right = 96.00165
+offset_bottom = 45.000282
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_etydo")
+
+[node name="LabelContainer" type="VBoxContainer" parent="MedalPopupViewport/LabelPanel" unique_id=983366756]
+process_mode = 3
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="UnlockLabel" type="Label" parent="MedalPopupViewport/LabelPanel/LabelContainer" unique_id=1021511068]
+process_mode = 3
+layout_mode = 2
+text = "Medal Unlocked"
+label_settings = SubResource("LabelSettings_8dk46")
+vertical_alignment = 1
+
+[node name="MedalLabel" type="Label" parent="MedalPopupViewport/LabelPanel/LabelContainer" unique_id=69561803]
+process_mode = 3
+layout_mode = 2
+text = "50P - Rock"
+label_settings = SubResource("LabelSettings_8dk46")
+vertical_alignment = 1
+
+[node name="MedalPanel" type="PanelContainer" parent="MedalPopupViewport" unique_id=94476764]
+process_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = -54.99991
+offset_bottom = 44.999977
+grow_horizontal = 2
+pivot_offset = Vector2(22.5, 22.5)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wjkg8")
+
+[node name="MedalClipPanel" type="PanelContainer" parent="MedalPopupViewport/MedalPanel" unique_id=1156320082]
+process_mode = 3
+clip_children = 1
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dqf66")
+
+[node name="MedalIcon" type="TextureRect" parent="MedalPopupViewport/MedalPanel/MedalClipPanel" unique_id=146584895]
+process_mode = 3
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_dqf66")
+expand_mode = 1
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=1994721676]
+process_mode = 3
+root_node = NodePath("../MedalPopupViewport")
+libraries/ = SubResource("AnimationLibrary_a37tn")
+autoplay = &"popup"

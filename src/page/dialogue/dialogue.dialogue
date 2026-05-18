@@ -149,12 +149,14 @@ if integrity < 4
 		He offers to further invest into the business, expanding its operations.
 		Tom's press becomes a household name and he prints what the people want to read.
 		He lives ever after.
+		do NgManager.unlock_medal(90199)
 		=> END
 	else
 		Rufus Collier lords over his son. He tells him he ought to follow a respectable profession and become a banker like him.
 		Cee agrees.
 		The press is sold and Tom follows in his father's footsteps.
 		He lives ever after.
+		do NgManager.unlock_medal(90197)
 		=> END
 Tom: I cannot.
 Cee: You are simply awful. Sometimes I think you do it to spite me.
@@ -180,6 +182,7 @@ They get married the following week.
 Tom continues his work at the press, making luxury books that his friends write and enjoy.
 Daisy becomes pregnant and eventually gives birth to a healthy baby boy.
 They live happily ever after.
+do NgManager.unlock_medal(90198)
 => END
 
 

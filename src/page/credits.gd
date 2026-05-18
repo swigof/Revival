@@ -21,8 +21,9 @@ func _ready() -> void:
 		Featuring the music \"Lonely\" by Leo Reisman & His Orchestra
 		From a 1927 recording in the public domain
 
-		Dialogue Manager Godot plugin by Nathan Hoad 
-		Licensed under the MIT License
+		Dialogue Manager Godot plugin by Nathan Hoad
+		Newgrounds.io API Godot plugin by jefvel
+		Both licensed under the MIT License
 
 		Everything else by swigof
 

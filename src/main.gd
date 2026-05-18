@@ -12,6 +12,7 @@ var jitter_timer = 0
 var active_page: Page
 
 func _ready() -> void:
+	NgManager.init(self)
 	get_viewport().set_physics_object_picking_first_only(true)
 	get_viewport().set_physics_object_picking_sort(true)
 	page = $Page
